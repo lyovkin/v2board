@@ -16,6 +16,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="format-detection" content="telephone=no">
 
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
     <!-- CSS
       ================================================== -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
