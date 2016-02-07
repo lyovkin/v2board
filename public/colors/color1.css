@@ -1,0 +1,82 @@
+.text-primary, .btn-primary .badge, .btn-link,a.list-group-item.active > .badge,.nav-pills > .active > a > .badge, p.drop-caps:first-child:first-letter, .accent-color, .post-more, ul.nav-list-primary > li a:hover, .widget_recent_comments a, .navigation > ul > li:hover > a, .flex-caption .hero-agent-contact, .property-info h4 a, .agent-info h4 a, .features-list li .icon, .property-listing h3 a, .agents-listing h3 a, .nav-tabs li.active > i, .nav-tabs li:hover > i, .location > i, .contact-info-blocks > div > i, .additional-amenities > span.available i, .error-404 h2 > i, .properties-table .action-button i, .pricing-column h3 {
+	color:#f55a4e;
+}
+a:hover, .testimonials > li cite a:hover, .property-listing h3 a:hover, .agents-listing h3 a:hover, .property-info h4 a:hover, .agent-info h4 a:hover{
+	color:#f55a4e;
+}
+.featured-gallery p, .post-more:hover, .widget_recent_comments a:hover, .property-info h4 a:hover{
+	opacity:.9
+}
+p.drop-caps.secondary:first-child:first-letter, .accent-bg, .fa.accent-color, .btn-primary,
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus,
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus,
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus,
+.label-primary,
+.progress-bar,
+a.list-group-item.active,
+a.list-group-item.active:hover,
+a.list-group-item.active:focus,
+.panel-primary > .panel-heading, .carousel-indicators .active, .owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span, hr.sm, .flex-control-nav a:hover, .flex-control-nav a.flex-active, .accordion-heading .accordion-toggle.active, .accordion-heading:hover .accordion-toggle, .accordion-heading:hover .accordion-toggle.inactive, .nav-tabs li a:hover, .nav-tabs li a:active, .nav-tabs li.active a, .fc-event, .site-header .social-icons a, .navigation > ul > li > ul > li:hover > a, .navigation > ul > li > ul > li > ul > li:hover a, .top-header, .block-heading h4, .single-property .price, .timeline > li > .timeline-badge, .pricing-column.highlight h3, .site-footer-bottom .social-icons a:hover{
+  background-color: #f55a4e;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary, .next-prev-nav a:hover, .staff-item .social-icons a:hover, .site-header .social-icons a:hover{
+  background: #f55a4e;
+}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus,
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus,
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active,
+a.list-group-item.active,
+a.list-group-item.active:hover,
+a.list-group-item.active:focus,
+.panel-primary,
+.panel-primary > .panel-heading, .fc-event{
+	border-color:#f55a4e;
+}
+.panel-primary > .panel-heading + .panel-collapse .panel-body, .navigation ul > li:hover > a, .navigation ul > li.current_menu_item > a{
+	border-top-color:#f55a4e;
+}
+.panel-primary > .panel-footer + .panel-collapse .panel-body, .widget .widgettitle{
+	border-bottom-color:#f55a4e;
+}
+blockquote{
+	border-left-color:#f55a4e;
+}
+
+/* Color Scheme Specific Classes */

@@ -1,0 +1,20 @@
+.bootstrap-tagsinput {
+    display: block;
+}
+
+ul#files {
+    list-style: none;
+    padding: 0;
+}
+
+.del-group img {
+    display:none;
+}
+
+.del-group.pending img {
+    display: inline;
+}
+
+.del-group.pending a {
+    display: none;
+}

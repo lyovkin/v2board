@@ -1,0 +1,23 @@
+{
+    "name": "za-web/shops",
+    "description": "",
+    "authors": [
+        {
+            "name": "Aleksandr Zamiatin",
+            "email": "cawa123@mail.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/views"
+        ],
+        "psr-4": {
+            "ZaWeb\\Shops\\": "src/ZaWeb/Shops"
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,10 @@
+
+#toggleArea .collapse {
+	height:auto !important;
+}
+#accordionArea .collapse {
+	height:auto !important;
+}
+.submit-image input{
+	width:80%!important;
+}

@@ -1,0 +1,6 @@
+<b>[[ message.user.user_name ]]</b>
+<p>[[ message.message ]]
+    @if(Auth::user()->hasRole('admin'))
+    <a style="cursor:pointer;" ng-click="deleteMessage([[message.id]])">Удалить</a>
+    @endif
+</p>

@@ -1,0 +1,10 @@
+/vendor
+
+.idea
+node_modules
+composer.lock
+/public/uploads
+/nbproject/private/
+/test/reports
+tests/_output/*
+auth.json
