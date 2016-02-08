@@ -75,6 +75,14 @@ Route::group(['middleware' => 'auth'], function()
 Route::get('shops_category', 'ShopCategoriesController@index');
 Route::post('shops_category', 'ShopCategoriesController@filter');
 
+/*
+ * Items category
+ */
+Route::resource('items_category', 'ItemsCategoryController');
+Route::post('getShop', [
+        'uses' =>'ItemsCategoryController@getShop',
+        'as' => 'getShop'
+]);
 
 $router->post('/ads/flush', 'AdsController@flush');
 

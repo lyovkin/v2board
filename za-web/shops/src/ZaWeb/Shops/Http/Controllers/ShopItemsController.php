@@ -37,7 +37,14 @@ class ShopItemsController extends Controller {
 	{
 		$shop = Shops::find($shop_id);
         if ($shop && $shop->canAddItem()) {
-		    return view('shops::shopitems.create', compact('items', 'shop_id'));
+
+			$categories = \DB::select("select cat.name, cat.id
+                                      from categories_shops d
+                                      join shops m on d.shop_id = m.id
+                             		  join items_category cat on d.category_id = cat.id
+                             		  where m.id = $shop_id");
+
+		    return view('shops::shopitems.create', compact('items', 'shop_id', 'categories'));
         } else {
             return redirect()->route('shops.my');
         }
@@ -78,7 +85,7 @@ class ShopItemsController extends Controller {
 	public function show($id)
 	{
         $shops = Shops::with('items')->find($id);
-        //dd($shops);
+
         return view('shops::shopitems.index', compact('shops'));
 	}
 
@@ -91,7 +98,14 @@ class ShopItemsController extends Controller {
 	{
         $items = ShopItems::with('attachment')->find($id);
         $shop_id = $items->shop_id;
-        return view('shops::shopitems.edit', compact('items', 'shop_id'));
+
+		$categories = \DB::select("select cat.name, cat.id
+                                      from categories_shops d
+                                      join shops m on d.shop_id = m.id
+                             		  join items_category cat on d.category_id = cat.id
+                             		  where m.id = $shop_id");
+
+        return view('shops::shopitems.edit', compact('items', 'shop_id', 'categories'));
 
 	}
 

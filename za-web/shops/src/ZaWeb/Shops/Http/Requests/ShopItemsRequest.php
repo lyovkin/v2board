@@ -24,6 +24,7 @@ class ShopItemsRequest extends Request {
 	{
 		return [
             'name' => 'required',
+			'category_id' => 'required',
 			'attachment' => 'required|image'
 		];
 	}

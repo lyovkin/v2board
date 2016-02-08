@@ -23,6 +23,7 @@
     <!--[if lte IE 9]>
     <link rel="stylesheet" type="text/css" href="css/ie.css" media="screen"/><![endif]-->
     <link href="{{ asset('css/zaweb.css') }}" rel="stylesheet" type="text/css"/>
+    @yield('css')
 
 <style>
     .morecontent span {

@@ -8,7 +8,7 @@ use App\Models\Payment;
 use App\Models\Attachment;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use ZaWeb\Shops\Models\ShopItems;
 use ZaWeb\Shops\Models\ShopProfile;
@@ -22,6 +22,13 @@ use App\Facades\ImageUploadFacade;
  */
 class ShopController extends Controller
 {
+
+    protected $req;
+
+    public function __construct(Request $request)
+    {
+        $this->req = $request;
+    }
 
     /**
      * Display a listing of the resource.
@@ -180,16 +187,26 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param Shops $shops
      * @return Response
+     * @internal param int $id
+     * @internal param int $shop_id
      */
     public function show(Shops $shops)
     {
         $items = ShopItems::with('shop')
             ->where('shop_id', '=', $shops->id)
             ->paginate(20);
-        //dd($items);
-        return view('shops::show', compact('shops', 'items'));
+
+        $shop_id = Shops::where('id', $shops->id)->first()->id;
+
+        $categories = \DB::select("select cat.name, cat.id
+                                      from categories_shops d
+                                      join shops m on d.shop_id = m.id
+                             		  join items_category cat on d.category_id = cat.id
+                             		  where m.id = $shop_id");
+
+        return view('shops::show', compact('shops', 'items', 'categories'));
     }
 
     /**
@@ -322,5 +339,30 @@ class ShopController extends Controller
 
             return redirect()->route('shops.my');
         }
+    }
+
+    /**
+     * @POST("/filtered/{shops}", middleware="auth", as="shops.filtered")
+     * @internal param Request $request
+     */
+    public function filterItems(Shops $shops)
+    {
+
+        $items = ShopItems::with('shop')
+            ->where('shop_id', '=', $shops->id)
+            ->where('category_id', \Request::input('cat_id'))
+            ->paginate(20);
+
+        //dd($this->req->all());
+
+        $shop_id = Shops::where('id', $shops->id)->first()->id;
+
+        $categories = \DB::select("select cat.name, cat.id
+                                      from categories_shops d
+                                      join shops m on d.shop_id = m.id
+                             		  join items_category cat on d.category_id = cat.id
+                             		  where m.id = $shop_id");
+
+        return view('shops::show', compact('shops', 'items', 'categories'));
     }
 }

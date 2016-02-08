@@ -3,6 +3,11 @@
     {{ $shops->profile->name }}
 @endsection
 
+@section('css')
+    <link href="/css/category_items.css" rel="stylesheet">
+
+@endsection
+
 @section('content')
     <div class="col-md-10" ng-app="shop">
         <div class="single-agent">
@@ -25,6 +30,18 @@
                     <div class="well">
                     <strong>Описание: </strong><p class=""> {{ $shops->profile->description }}</p>
                     </div>
+                    <h5>Категории магазина:</h5>
+                    @foreach($categories as $cat)
+                        <form action="{{url('filtered', ["id" => $shops->id])}}" method="post" name="category">
+                            <div class="update-nag">
+                                <input type="hidden" value="{{ $cat->id }}" name="cat_id">
+                                <button class="btn btn-primary" type="submit">{{ $cat->name }}</button>
+                            </div>
+
+                        </form>
+                        <br />
+                    @endforeach
+
                 </div>
             </div>
             <br />
@@ -69,11 +86,20 @@
         <h3>Товары
             @if(Auth::check())
                 @if($shops->user_id == Auth::user()->id && $shops->canAddItem())
+                    <p class="primary" style="font-size: 18px">Уважаемые владельцы магазина, перед созданием товара, создайте категории для Ваших товаров.
+        Это можно сделать, нажав на кнопку "Добавить категорию товара".</p>
                     @if(!empty($shops->items))
                     <a href="{{ route('shopitems.show', ["shop_id"=>$shops->id])}}" class="btn btn-default btn-sm"> Все товары</a>
                     @endif
-                    <a href="{{ url("shopitems/create", ["shop_id"=>$shops->id]) }}" class="btn btn-primary btn-sm">Добавить</a>
+                    <a href="{{ url("shopitems/create", ["shop_id"=>$shops->id]) }}" class="btn btn-primary btn-sm">Добавить товар</a>
 
+                    {{--<a href="{{ route("items_category.index") }}" class="btn btn-primary btn-sm">Мои категории</a>--}}
+
+                    {{--<a href="{{ url("items_category/create") }}" class="btn btn-primary btn-sm">Добавить категорию товара</a>--}}
+                    <form action="{{ route('getShop') }}" method="post">
+                        <input type="hidden" value="{{ $shops->id }}" name="shop_id">
+                        <button type="submit" class="btn btn-primary btn-sm">Добавить категорию товара</button>
+                    </form>
                 @endif
             @endif
         </h3>
