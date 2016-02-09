@@ -8,3 +8,5 @@ composer.lock
 /test/reports
 tests/_output/*
 auth.json
+
+.env
