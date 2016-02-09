@@ -3,9 +3,9 @@
         <h3 class=" title-color" >В ХаЛяВе</h3>
         <ul class="left-aside-menujt">
             @if(Auth::user())
-                <li  class="border-bottom" ><a href="{{ url('profile') }}">Мой профиль</a></li>
-                <li><a href="{{ url('shops_category')}}">Категории магазинов</a></li>
-                <li><a href="{{ url('shops')}}">Интернет - магазины</a></li>
+                <li class="border-bottom"><a href="{{ url('profile') }}">Мой профиль</a></li>
+               {{-- <li class="aside-li"><a href="{{ url('shops_category')}}">Категории магазинов</a></li>--}}
+                <li class="aside-li"><a href="{{ url('shops')}}">Интернет - магазины</a></li>
 
                 <li><a href="{{ route('shops.my') }}">Мои магазины</a></li>
                 <li class="aside-li"><a href=" {{ url('ads/create') }}">Подать объявление</a></li>

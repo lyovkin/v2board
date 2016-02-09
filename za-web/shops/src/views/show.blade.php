@@ -31,16 +31,20 @@
                     <strong>Описание: </strong><p class=""> {{ $shops->profile->description }}</p>
                     </div>
                     <h5>Категории магазина:</h5>
-                    @foreach($categories as $cat)
-                        <form action="{{url('filtered', ["id" => $shops->id])}}" method="post" name="category">
-                            <div class="update-nag">
-                                <input type="hidden" value="{{ $cat->id }}" name="cat_id">
-                                <button class="btn btn-primary" type="submit">{{ $cat->name }}</button>
-                            </div>
+                    <div class="row">
+                        @foreach($categories as $cat)
+                            <form action="{{url('filtered', ["id" => $shops->id])}}" method="post"
+                                  name="category" class="col-md-4" style="padding-bottom: 10px;">
 
-                        </form>
-                        <br />
-                    @endforeach
+                                <input type="hidden" value="{{ $cat->id }}" name="cat_id">
+
+                                <button class="btn btn-success" type="submit"
+                                        style="padding-right: 120px; padding-bottom: 30px">
+                                    <span style="position: absolute">{{ $cat->name }} <i
+                                                class="fa fa-shopping-cart"></i> </span></button>
+                            </form>
+                        @endforeach
+                    </div>
 
                 </div>
             </div>

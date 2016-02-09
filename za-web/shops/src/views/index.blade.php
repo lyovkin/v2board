@@ -3,20 +3,46 @@
     Магазины
 @stop
 
+@section('css')
+    <style>
+       .btn-primary:hover {
+           background: #b94a48;
+       }
+    </style>
+@endsection
+
 @section('content')
     <div class="col-md-7">
         @if (Session::has('message'))
             <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
         <div class="block-heading">
-           {{-- @if(Auth::check())
-                <a href="{{route('shops.create')}}" class="btn btn-sm btn-primary pull-right">Создать магазин
-                    <i class="fa fa-long-arrow-right"></i></a>
-            @endif--}}
-                <h4><span class="heading-icon"><i class="fa fa-comment"></i></span>Магазины</h4>
-            <p class="h5">У Вас есть возможность покупки интернет-магазина, для этого необходимо пополнить баланс и купить магазин в платных услугах.</p>
+            <h4><span class="heading-icon"><i class="fa fa-comment"></i></span>Магазины</h4>
+                <p class="h5">У Вас есть возможность покупки интернет-магазина.</p>
+                <p class="h5">Для этого необходимо пополнить баланс и купить магазин в платных услугах.</p>
         </div>
             <br />
+            <br />
+            <h3>Категории магазинов</h3>
+        <div class="row">
+            @foreach($links as $link)
+                <form action="{{ action('ShopCategoriesController@filter') }}" method="post"
+                      class="col-md-4" style="padding-bottom: 10px;">
+
+                        <input type="hidden" name="id" value="{{ $link->id }}">
+
+                        <button
+                                class="btn btn-primary form-group"
+                                type="submit"
+                                style="padding-right: 155px; padding-bottom: 30px"
+                                ><span style="position: absolute">{{ $link->name }}</span>
+                        </button>
+
+                </form>
+           {{-- <a href="#" class="list-group-item">First item</a>--}}
+            @endforeach
+        </div>
+
         <div class="agents-listing">
             <hr />
             @if(isset($category))
@@ -24,7 +50,7 @@
                 <p class="h4 text-center" style="font-size: 23px; padding-top: 10px;">Магазины из категории
                     <span class="badge">{{ \App\Models\ShopCategories::find($category)->name }}
                         <i class="fa fa-cart-plus"></i> </span></p>
-            </div>
+        </div>
             @endif
 
             <ul>

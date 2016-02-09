@@ -15,6 +15,11 @@ class ViewComposerServiceProvider extends ServiceProvider {
 	public function boot()
 	{
         View::composer(['layouts.app', 'layouts.app2', 'm_layouts.app'], 'ZaLaravel\LaravelNavigation\Composers\NavigationComposer');
+
+		/*
+		 * Shops categories
+		 */
+		View::composer('shops::index', 'App\View\Composers\ShopCategoryComposer');
 	}
 
 	/**

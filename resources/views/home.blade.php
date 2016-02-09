@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title')
@@ -76,46 +75,6 @@
                                     </a>
                                     @endforeach
 
-                                            <!--  <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/600/400?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a> -->
                             </div>
                         @endif
                         <div class="col-md-{{isset($ad->ads_attachment[0]) ? '7':'12'}}" style="padding: 0px;">

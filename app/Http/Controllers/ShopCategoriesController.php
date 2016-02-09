@@ -16,8 +16,8 @@ class ShopCategoriesController extends Controller {
 	 */
 	public function index()
 	{
-		$links = ShopCategories::all();
-		return view('shop_category.index', compact('links'));
+		/*$links = ShopCategories::all();
+		return view('shops::index', compact('links'));*/
 	}
 
 	/**
