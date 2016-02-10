@@ -32,6 +32,7 @@
 
     <style>
         .navigate > li > a  { color: #000; }
+        .left-aside-menujt > li > a { color: #000; }
     </style>
 @yield('css')
 
