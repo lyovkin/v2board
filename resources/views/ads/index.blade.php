@@ -25,46 +25,7 @@
                                     @else
 
                                     @endif
-                                            <!--  <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/600/400?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=4"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a>
-                        <a href="http://loremflickr.com/600/400?random=2"
-                           rel="prettyPhoto" title="This is the description">
-                            <img src="http://loremflickr.com/50/50?random=4" alt="" class="img-thumbnail">
-                        </a> -->
+
                         </div>
                         <div class="col-md-8 col-sm-8">
 

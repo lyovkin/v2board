@@ -1,5 +1,3 @@
-
-
 <div class="col-md-3 sidebar">
     {{--<!-- Проверка на наличие банеров -->--}}
     @if(count($blocks) > 0)

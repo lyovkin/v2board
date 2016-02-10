@@ -1,21 +1,22 @@
-
 @extends('layouts.app')
 
 @section('title')
     Главная
-@stop
+@endsection
+
+@section('css')
+    <style>
+        #txt { color: #000 }
+    </style>
+@endsection
 
 @section('content')
     <div class="col-md-7 posts-archive">
         <div class="block-heading">
-
             <a href="{{route('ads.create')}}" class="btn btn-sm btn-primary pull-right">Подать объявление <i
                         class="fa fa-long-arrow-right"></i></a>
-                      
-           {{-- <a href="{{route('welcome.new')}}" class='btn btn-sm btn-primary pull-right'>Новые</a>--}}
             <h4><span class="heading-icon"><i class="fa fa-comment"></i></span>Объявления</h4>
         </div>
-
         <ul class="updates">
             @include('handlebars.question')
         </ul>
@@ -58,18 +59,13 @@
 
         </script>
         <div class="posts">
-
-
         @foreach($ads as $ad)
             <article class="post">
             <div class="row">
-                    
                     <input type="hidden" class="ads_id" name="ads_id" value="{{ $ad->id }}" />
                 @if(isset($ad->ads_attachment[0]))
                     <div class="col-md-5">
-
                             @foreach($ad->ads_attachment->slice(0, 4) as $image)
-
                                  <a href="{{$image->url}}"
                                    rel="prettyPhoto[{{$ad->id}}]" title="This is the description">
                                 {!! HTML::image($image->url.'?w=115&h=115&fit=crop', $image->comment,
@@ -77,7 +73,6 @@
                                     </a>
 
                             @endforeach
-
                     </div>
                 @else
                     <div class="col-md-5">
@@ -86,14 +81,9 @@
                 @endif
                     <div class="col-md-7" style="padding: 0;">
 
-
                     <span class="post-meta meta-data">
-                        {{-- <span><i class="fa fa-check-circle-o"></i><a href="{{ url('ads', $ad->id) }}" style="text-decoration: none"> {{$ad->type->name}}</a></span>
-                        <span><i class="fa fa-calendar"></i> {{$ad->created_at}}</span> --}}
                         <span><i class="fa fa-tags"></i>
-                            <a
-                                    href="/category/{{$ad->category->alias}}" style="text-decoration: none">{{$ad->category->title}}</a>
-            
+                            <a href="/category/{{$ad->category->alias}}" style="text-decoration: none">{{$ad->category->title}}</a>
                         </span>
                         <span><i class="fa fa-map-marker"></i>
                             @if ($ad->city)

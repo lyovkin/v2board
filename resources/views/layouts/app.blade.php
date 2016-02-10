@@ -29,6 +29,10 @@
 
     <!--[if lte IE 9]>
     <link rel="stylesheet" type="text/css" href="css/ie.css" media="screen"/><![endif]-->
+
+    <style>
+        .navigate > li > a  { color: #000; }
+    </style>
 @yield('css')
 
     <!--GA-->
@@ -60,13 +64,6 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <ul class="horiz-nav pull-left">
-                            {{--<li class="dropdown"><a data-toggle="dropdown"><i class="fa fa-globe"></i> Город <b
-                                            class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="">Воркута</a></li>
-                                    <li><a href="">Инта</a></li>
-                                </ul>
-                            </li>--}}
                             @if(Auth::guest())
                             <li><a href="{{ url('auth/login') }}" ><i class="fa fa-user"></i> Вход </a>
                                 
@@ -79,17 +76,6 @@
                             @endif
                         </ul>
                     </div>
-                    <!---
-
-                    <div class="col-md-8 col-sm-6">
-                    <ul class="horiz-nav pull-right">
-                    <li><a href="http://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                        </ul>
-                    </div>
-                    -->
-
                 </div>
             </div>
         </div>
@@ -114,46 +100,8 @@
 
                     <div class="pluso" style="margin: 4px; margin-top: 21px;" data-background="transparent" data-options="medium,square,line,horizontal,counter,theme=07" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
 
-                   {{-- <div class="col-md-6 col-sm-4 col-xs-4">--}}
-
                         <div class="contact-info-blocks hidden-sm hidden-xs">
 
-
-                           {{-- <ul class="horiz-nav-icons">
-
-                                <li>
-                                    <a href="https://vk.com/club49280308" target="_blank">
-                                        <img src="/images/social/VK.png" width="30">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://instagram.com" target="_blank">
-                                        <img src="/images/social/FB.png" width="30">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://instagram.com" target="_blank">
-                                        <img src="/images/social/ya.png" width="30">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://instagram.com" target="_blank">
-                                        <img src="/images/social/Twitter.png" width="30">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://instagram.com" target="_blank">
-                                        <img src="/images/social/Odnoklasniki.png" width="30">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://instagram.com" target="_blank">
-                                        <img src="/images/social/G.png" width="30">
-                                    </a>
-                                </li>
-
-                            </ul>--}}
-                        {{--</div>--}}
                         <a href="#" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
                     </div>
                 </div>
@@ -164,8 +112,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navigation">
-                            <ul class="">
-
+                            <ul class="navigate">
                                 @foreach($items as $item)
                                     @if(Auth::guest() && $item->link == '/')
 
@@ -185,7 +132,6 @@
                                     <li><a href="/faq">FAQ</a></li>
                                     <li><a href="/contacts">Контакты</a></li>
                                     <li><a href="javascript:jivo_api.open();">Cвязаться</a></li>
-
                             </ul>
                         </nav>
                     </div>
