@@ -4,21 +4,18 @@
     <!-- Basic Page Needs
       ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="cleartype" content="on">
     <title>Халява -  @yield('title')</title>
     <meta property="og:title" content="@yield('og_title')" />
     <meta property="og:description" content="@yield('og_description')" />
     <meta property="og:image" content="@yield('og_image')" />
-    <meta name="keywords" content="">
-    <meta name="author" content="">
     <!-- Mobile Specific Metas
       ================================================== -->
+    <meta http-equiv="cleartype" content="on">
     <meta name="MobileOptimized" content="320">
     <meta name="HandheldFriendly" content="True">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
     <!-- CSS
       ================================================== -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -85,7 +82,7 @@
                     </div>
                 <!-- Collection of nav links and other content for toggling -->
                 <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" id="navigate">
                         @foreach($items as $item)
                             @if(Auth::guest() && $item->link == '/')
 
@@ -206,11 +203,18 @@
         'panel': document.getElementById('panel'),
         'menu': document.getElementById('menu'),
         'padding': 256,
-        'tolerance': 70
+        'tolerance': 70,
+        'touch': false
     });
+
+    // Then, use the slideout `open` and `close` events
+    slideout.on('open', slideout.enableTouch);
+    slideout.on('close', slideout.disableTouch);
+
     document.querySelector('#slidemenu').addEventListener('click', function() {
         slideout.toggle();
     });
+
 </script>
 
 
