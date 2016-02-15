@@ -97,9 +97,7 @@
                     @endif
                     <a href="{{ url("shopitems/create", ["shop_id"=>$shops->id]) }}" class="btn btn-primary btn-sm">Добавить товар</a>
 
-                    {{--<a href="{{ route("items_category.index") }}" class="btn btn-primary btn-sm">Мои категории</a>--}}
 
-                    {{--<a href="{{ url("items_category/create") }}" class="btn btn-primary btn-sm">Добавить категорию товара</a>--}}
                     <form action="{{ route('getShop') }}" method="post">
                         <input type="hidden" value="{{ $shops->id }}" name="shop_id">
                         <button type="submit" class="btn btn-primary btn-sm">Добавить категорию товара</button>
@@ -116,11 +114,13 @@
                 </div>
             </div>
             <hr>
+            @if($items->isEmpty())
+                <div class="well"><h5 class="text-center text-danger">В этой категории нет товаров</h5></div>
+            @endif
             <div class="property-grid">
-
                 <ul class="grid-holder col-3" >
                     @foreach($items as $item)
-                    <li class="grid-item type-rent" >
+                    <li class="grid-item type-rent">
                         <div class="property-block">
                             @if ($item->attachment)
                                 <img src="{{ $item->attachment->url }}?w=400&h=300" alt="">

@@ -344,6 +344,8 @@ class ShopController extends Controller
     /**
      * @POST("/filtered/{shops}", middleware="auth", as="shops.filtered")
      * @internal param Request $request
+     * @param Shops $shops
+     * @return \Illuminate\View\View
      */
     public function filterItems(Shops $shops)
     {
@@ -352,8 +354,6 @@ class ShopController extends Controller
             ->where('shop_id', '=', $shops->id)
             ->where('category_id', \Request::input('cat_id'))
             ->paginate(20);
-
-        //dd($this->req->all());
 
         $shop_id = Shops::where('id', $shops->id)->first()->id;
 

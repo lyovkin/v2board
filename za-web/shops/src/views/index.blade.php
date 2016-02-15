@@ -23,7 +23,7 @@
         </div>
             <br />
             <br />
-            <h3>Категории магазинов</h3>
+            <h3 style="padding-top: 20px;">Категории магазинов</h3>
         <div class="row">
             @foreach($links as $link)
                 <form action="{{ action('ShopCategoriesController@filter') }}" method="post"
