@@ -107,10 +107,13 @@
         </h3>
         <div ng-controller="CartCtrl">
             <div class="shop__cart" ng-show="cart.getTotalItems() > 0">
-                <div class="well">
-                    <i class="fa fa-shopping-cart" style="font-size:30px; "></i>
-                    <a href="{{ url('cart') }}"  >Корзина [[ cart.getSubTotal() ]] рублей ([[ cart.getTotalItems() ]])</a>
-                    <strong><a data-clear-cart="" href="">Очистить</a></strong>
+                <div class="well" style="padding: 15px 25px 0px;">
+                    <h4 href="{{ url('cart') }}">
+                        <i class="fa fa-cart-arrow-down fa-2x"></i>
+                       В корзине товаров: <strong>[[ cart.getTotalItems() ]]</strong> на сумму: <strong>[[ cart.getSubTotal() ]]</strong> рублей</h4>
+                    <h4><a class="btn btn-success" href="{{ url('cart') }}">Оформить заказ</a> или
+                        <a class="btn btn-primary" style="background-color: #00b3ee" href="{{ url('shops') }}"> Продолжить покупки</a> </h4>
+                    <h4 style="padding-top: 25px;"><a data-clear-cart="" href="" >Удалить товары <i>&Cross;</i></a></h4>
                 </div>
             </div>
             <hr>
@@ -143,7 +146,11 @@
                                     <span class="shop__in-cart" data-in-cart="{{ $item->id }}">
 
                                     </span>
-                                    <button class="btn btn-success shop__add-cart"  href="#" data-add-cart="{{ $item->id }}" data-item-name="{{ $item->name }}"
+                                    <button class="btn btn-success shop__add-cart"  href="#"
+                                            data-img="{{ $item->attachment->url }}"
+                                            data-description="{{ mb_substr($item->description, 0, 100) }}"
+                                            data-add-cart="{{ $item->id }}"
+                                            data-item-name="{{ $item->name }}"
                                             data-item-price="{{ $item->price }}"
                                             @if($item->attachment)
                                                 data-item-partner-name="{{ $item->shop->profile->name }}"

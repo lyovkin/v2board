@@ -3,7 +3,11 @@
 Вам поступил заказ на следующие позиции:
 <ul>
 @foreach($items as $item)
-    <li><a>{{ $item['name'] }}</a> <strong>x {{ $item['quantity'] }} ( {{ $item['price'] * $item['quantity'] }} рублей )</strong></li>
+    <li><strong>Название: </strong>{{ $item['name'] }} <strong>x {{ $item['quantity'] }} ( {{ $item['price'] * $item['quantity'] }} рублей )</strong></li>
+    <li><strong>Артикул №: </strong>{{ $item['art'] }}</li>
+    <li><strong>Описание: </strong>{{ $item['description'] }}</li>
+    <br>
+    <img src="{{ $item['pic'] }}" width="100" height="100">
 @endforeach
 </ul>
 

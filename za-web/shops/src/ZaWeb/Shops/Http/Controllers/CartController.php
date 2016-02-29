@@ -34,6 +34,7 @@ class CartController extends Controller
     {
         $client = $request->user;
         $cart = $request->cart;
+
         $totalSum = 0;
         foreach($cart as $item)
         {
@@ -84,18 +85,43 @@ class CartController extends Controller
     }
 
     /**
-     * @Get("/cart/test")
+     * @Post("/cart/test")
      */
-    public function test()
+    public function test(Request $request)
     {
-        $data = [];
-        \Mail::send('shops::emails.order', $data, function($message)
-        {
-            $message->from('board@mail.com', 'Test');
+        $client = $request->user;
+        $cart = $request->cart;
 
-            $message->to('iillexial@gmail.com')->subject('Test');
+        $totalSum = 0;
+        foreach ($cart as $item) {
+            $itemInShop = ShopItems::find($item['_id']);
+            $totalSum += $itemInShop->price * $item['_quantity'];
 
-        });
+            $items[$item['_data']['partner']][] = [
+                'id' => $itemInShop->id,
+                'name' => $itemInShop->name,
+                'price' => $itemInShop->price,
+                'art' => $itemInShop->art_number,
+                'description' => mb_substr($itemInShop->description, 0, 200) . '...',
+                'pic' => $itemInShop->attachment->url,
+                'quantity' => $item['_quantity']
+            ];
+        }
+
+        foreach ($items as $id => $positions) {
+            $data = [
+                'items' => $positions,
+                'client' => $client,
+                'totalSum' => $totalSum
+            ];
+            // $shop = Shops::find($id);
+            \Mail::send('shops::emails.order', $data, function ($message) {
+                $message->from('board@mail.com', 'Test');
+
+                $message->to('anatoliymolinari@gmail.com')->subject('Test');
+
+            });
+        }
     }
 
 }
