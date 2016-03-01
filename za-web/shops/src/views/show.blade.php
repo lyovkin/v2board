@@ -23,6 +23,9 @@
             border-top-right-radius:4px;
             border-bottom-left-radius:0;
         }
+        .blacked-text {
+            color: #000;
+        }
     </style>
 
 @endsection
@@ -40,8 +43,8 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div>
-                        <p class="h4">Информация о магазине</p>
-                        <ul class="list-group">
+                        <p class="h4 blacked-text">Информация о магазине</p>
+                        <ul class="list-group blacked-text">
                             <li class="list-group-item">
                                 <i class="fa fa-calculator"></i> Всего товаров в магазине
                                 <span style="float:right;">{{ count($shops->items) }}</span>
@@ -87,18 +90,18 @@
             <br>
             <div class="row">
                 <div class="col-md-6 col-lg-6">
-                    <span class="h4" style="vertical-align: 10px;">Категории магазина</span>
-                    <div class="list-group list-group-horizontal">
+                    <span class="h4 blacked-text" style="vertical-align: 10px;">Категории магазина</span>
+                    <div class="list-group list-group-horizontal blacked-text">
                         @foreach($categories as $cat)
                         <p href="#" class="list-group-item active">{{ $cat->name }}</p>
                         @endforeach
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
-                    <span class="h4" style="vertical-align: 10px;">Фильтр товаров по категориям</span>
+                    <span class="h4 blacked-text" style="vertical-align: 10px;">Фильтр товаров по категориям</span>
                         <form action="{{url('filtered', ["id" => $shops->id])}}" method="post"
                               name="category" style="padding-bottom: 10px;">
-                            <select name="cat_id" class="form-control" onclick="this.form.submit()">
+                            <select name="cat_id" class="form-control blacked-text" onclick="this.form.submit()">
                                 <option value="0">Все товары</option>
                                 @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -108,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <p class="h4 text-center">Товары
+        <p class="h4 text-center blacked-text">Товары
             @if(Auth::check())
                 @if($shops->user_id == Auth::user()->id && $shops->canAddItem())
                     <p class="primary" style="font-size: 11px; color: red;">* Уважаемые владельцы магазина,
@@ -180,8 +183,8 @@
                                     @endif
                                 </h4>
                                 <hr>
-                                <p class="h4">Описание: </p>
-                                <p class="description">{{ $item->description }}</p>
+                                <p class="h4 blacked-text">Описание: </p>
+                                <p class="description blacked-text">{{ $item->description }}</p>
                                 <hr>
                                 <div class="price"><span>{{ $item->price }} <i class="fa fa-rub"></i></span></div>
                                 <div class="shop__cart-button" style="float:right">
