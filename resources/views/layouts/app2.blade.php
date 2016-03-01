@@ -232,6 +232,8 @@
 <script src="/js/ads.js"></script>
 <script src="/js/nottifications.js"></script>
 
+<script src="/js/readmore.min.js"></script>
+
 <script src="{{ asset('js/shop.js') }}"></script>
 
 <!-- All Scripts -->
@@ -249,44 +251,6 @@
         var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
 <!--{/literal} END JIVOSITE CODE -->
 
-<script>
-    $(document).ready(function() {
-        // Configure/customize these variables.
-        var showChar = 300;  // How many characters are shown by default
-        var ellipsestext = "...";
-        var moretext = "Читать далее >>>";
-        var lesstext = "Свернуть <<<";
-
-
-        $('.more').each(function() {
-            var content = $(this).html();
-
-            if(content.length > showChar) {
-
-                var c = content.substr(0, showChar);
-                var h = content.substr(showChar, content.length - showChar);
-
-                var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
-                $(this).html(html);
-            }
-
-        });
-
-        $(".morelink").click(function(){
-            if($(this).hasClass("less")) {
-                $(this).removeClass("less");
-                $(this).html(moretext);
-            } else {
-                $(this).addClass("less");
-                $(this).html(lesstext);
-            }
-            $(this).parent().prev().toggle();
-            $(this).prev().toggle();
-            return false;
-        });
-    });
-</script>
 @yield('js')
 </body>
 </html>

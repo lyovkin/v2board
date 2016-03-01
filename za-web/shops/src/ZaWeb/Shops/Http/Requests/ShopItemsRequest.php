@@ -24,6 +24,7 @@ class ShopItemsRequest extends Request {
 	{
 		return [
             'name' => 'required',
+			'description' => 'required',
 			'category_id' => 'required',
 			'attachment' => 'required|image'
 		];
@@ -32,6 +33,7 @@ class ShopItemsRequest extends Request {
     public function messages(){
         return [
             'name.required' => 'Введите имя товара',
+			'description.required' => 'Введите описание',
 			'category_id.required' => 'Выберете категорию товара',
             'attachment.required' => 'Загрузите изображение',
             'attachment.image' => 'Загруженый файл должен быть изображением'

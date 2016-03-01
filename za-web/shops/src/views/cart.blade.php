@@ -19,7 +19,7 @@
                         <div class="property-block"> <a href="#" class=""> <img ng-src="[[ item.getData().data.image ]]?w=600&h=400&fit=crop" alt=""> </a>
                             <div class="property-info">
                                 <h4 ng-cloak>[[ item.getName() ]]</h4>
-                                <p ng-cloak>Описание: [[item.getData().data.description]]</p>
+                                <p ng-cloak>Описание: [[item.getData().data.description]]...</p>
                                 <div class="price" ng-cloak><strong><i class="fa fa-rub"></i></strong><span> [[ item.getPrice() * item.getQuantity() ]]</span></div>
                                 <div class="cart-action btn btn-warning btn-sm">
                                     <a data-remove-cart="[[ item.getId() ]]" style="color: #fff; text-decoration: none;"><strong>Удалить</strong></a></div>

@@ -47,10 +47,10 @@
 		    "ZaWeb\\Shops\\": "za-web/shops/src/ZaWeb/Shops",
             "ZaWeb\\Chat\\": "za-web/chat/src/ZaWeb/Chat",
             "ZaLaravel\\LaravelRobokassa\\": "za-web/laravel-robokassa/src/ZaLaravel/LaravelRobokassa"
-
-
-
-        }
+        },
+		"files": [
+			"app/Helpers/helpers.php"
+		]
 	},
 	"scripts": {
 		"post-install-cmd": [

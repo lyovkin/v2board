@@ -212,8 +212,9 @@ class ShopController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param Shops $shops
      * @return Response
+     * @internal param int $id
      */
     public function edit(Shops $shops)
     {
@@ -230,8 +231,10 @@ class ShopController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param ShopRequest $request
+     * @param Shops $shops
      * @return Response
+     * @internal param int $id
      */
     public function update(ShopRequest $request, Shops $shops)
     {
@@ -349,11 +352,16 @@ class ShopController extends Controller
      */
     public function filterItems(Shops $shops)
     {
-
-        $items = ShopItems::with('shop')
-            ->where('shop_id', '=', $shops->id)
-            ->where('category_id', \Request::input('cat_id'))
-            ->paginate(20);
+        if (\Request::input('cat_id') == 0) {
+            $items = ShopItems::with('shop')
+                ->where('shop_id', '=', $shops->id)
+                ->paginate(20);
+        } else {
+            $items = ShopItems::with('shop')
+                ->where('shop_id', '=', $shops->id)
+                ->where('category_id', \Request::input('cat_id'))
+                ->paginate(20);
+        }
 
         $shop_id = Shops::where('id', $shops->id)->first()->id;
 

@@ -12,11 +12,11 @@
         @foreach($shops->items as $item)
             <div class="col-lg-4">
                 <div class="well">
-                    <h4><span class="label label-success">Создан: {{ $item->created_at }}</span></h4>
-                    <h4><span class="">Название товара: {{ $item->name }}</span></h4>
-                    <h4>Описание: </h4> <p class="more">{{ $item->description }}</p>
+                    <h4><span class="label label-success">Товар создан: {{ $item->created_at }}</span></h4>
+                    <h4><span class=""><strong>Категория товара:</strong> {{ upperFirstLetter($item->category->name) }}</span></h4>
+                    <h4><span class=""><strong>Название товара:</strong> {{ upperFirstLetter($item->name) }}</span></h4>
+                    <h4><strong>Описание:</strong> </h4> <p class="more">{{ $item->description }}</p>
                     <hr>
-                    <h4>Изображение: </h4>
                     @if ($item->attachment)
                         <img src="{{ $item->attachment->url }}?w=400&h=300" alt="">
                     @else

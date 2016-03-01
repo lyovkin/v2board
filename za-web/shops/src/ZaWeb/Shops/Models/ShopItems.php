@@ -10,10 +10,15 @@ class ShopItems extends Model {
     {
         return $this->belongsTo('App\Models\Attachment');
     }
+
     public function shop()
     {
         return $this->belongsTo('ZaWeb\Shops\Models\Shops');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Models\ItemsCategory');
+    }
 
 }

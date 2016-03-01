@@ -6,105 +6,142 @@
 @section('css')
     <link href="/css/category_items.css" rel="stylesheet">
 
+    <style>
+        .list-group-horizontal .list-group-item {
+            display: inline-block;
+        }
+        .list-group-horizontal .list-group-item {
+            margin-bottom: 0;
+            margin-left:-4px;
+            margin-right: 0;
+        }
+        .list-group-horizontal .list-group-item:first-child {
+            border-top-right-radius:0;
+            border-bottom-left-radius:4px;
+        }
+        .list-group-horizontal .list-group-item:last-child {
+            border-top-right-radius:4px;
+            border-bottom-left-radius:0;
+        }
+    </style>
+
 @endsection
 
 @section('content')
     <div class="col-md-10" ng-app="shop">
         <div class="single-agent">
 
-            <div class="counts pull-right"><span>Товары</span><strong>{{ count($shops->items) }}</strong></div>
-            @if(Auth::check())
-                @if($shops->user_id == Auth::user()->id)
-                    <a href="{{ route('shops.edit', ["id"=>$shops->id]) }}" class="btn btn-warning btn-sm" >Редактировать магазин</a>
-                @endif
-            @endif
-            <h2 class="page-title">{{ $shops->profile->name }}</h2>
+            <h2 class="page-title text-center">{{ $shops->profile->name }}</h2>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     @if($shops->attachment)
-                    <img src="{{ $shops->attachment->url }}?w=450" alt="{{ $shops->profile->name }}" class="img-thumbnail">
+                    <img src="{{ $shops->attachment->url }}?w=375" alt="{{ $shops->profile->name }}" class="img-thumbnail">
                     @endif
                 </div>
-
                 <div class="col-md-6 col-sm-6">
-                    <div class="well">
-                    <strong>Описание: </strong><p class=""> {{ $shops->profile->description }}</p>
-                    </div>
-                    <h5>Категории магазина:</h5>
-                    <div class="row">
-                        @foreach($categories as $cat)
-                            <form action="{{url('filtered', ["id" => $shops->id])}}" method="post"
-                                  name="category" class="col-md-4" style="padding-bottom: 10px;">
-
-                                <input type="hidden" value="{{ $cat->id }}" name="cat_id">
-
-                                <button class="btn btn-success" type="submit"
-                                        style="padding-right: 120px; padding-bottom: 30px">
-                                    <span style="position: absolute">{{ $cat->name }} <i
-                                                class="fa fa-shopping-cart"></i> </span></button>
-                            </form>
-                        @endforeach
-                    </div>
-
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="agent-contact-details">
-                        <p class="h4">Контакты</p>
+                    <div>
+                        <p class="h4">Информация о магазине</p>
                         <ul class="list-group">
                             <li class="list-group-item">
+                                <i class="fa fa-calculator"></i> Всего товаров в магазине
+                                <span style="float:right;">{{ count($shops->items) }}</span>
+                            </li>
+                            <li class="list-group-item">
                                 @if($shops->profile->phone )
-                                    <span class="badge">{{ $shops->profile->phone }}</span>
+                                    <span style="float:right">{{ $shops->profile->phone }}</span>
                                 @else
-                                    <span style="float:right"><i>Не указано</i></span>
+                                    <span style="float:right">Не указано</span>
                                 @endif
-                                    Рабочий телефон
+                                <i class="fa fa-mobile"></i> Телефон
                             </li>
                             <li class="list-group-item">
                                 @if($shops->profile->email )
-
-                                <span class="badge">{{ $shops->profile->email }}</span>
+                                    <span style="float:right">{{ $shops->profile->email }}</span>
                                 @else
-                                    <span style="float:right"><i>Не указано</i></span>
+                                    <span style="float:right">Не указано</span>
                                 @endif
-                                    Почта
+                                <i class="fa fa-envelope-o"></i> Email
                             </li>
                             <li class="list-group-item">
                                 @if($shops->city->city_name)
-                                    <span class="badge">{{ $shops->city->city_name }}</span>
+                                    <span style="float:right">{{ $shops->city->city_name }}</span>
                                 @else
-                                    <span style="float:right"><i>Не указано</i></span>
+                                    <span style="float:right">Не указано</span>
                                 @endif
-                                    Город
+                                <i class="fa fa-building-o"></i> Город
                             </li>
+                            <li class="list-group-item">
+                                <p><i class="fa fa-book"></i> Описание</p>
+                                @if($shops->profile->description)
+                                    <span>{{ $shops->profile->description }}</span>
+                                @else
+                                    <span style="float:right; position: absolute;top: 10px;right: 12px;">Не указано</span>
+                                @endif
+
+                            </li>
+
                         </ul>
                     </div>
                 </div>
-
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <span class="h4" style="vertical-align: 10px;">Категории магазина</span>
+                    <div class="list-group list-group-horizontal">
+                        @foreach($categories as $cat)
+                        <p href="#" class="list-group-item active">{{ $cat->name }}</p>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <span class="h4" style="vertical-align: 10px;">Фильтр товаров по категориям</span>
+                        <form action="{{url('filtered', ["id" => $shops->id])}}" method="post"
+                              name="category" style="padding-bottom: 10px;">
+                            <select name="cat_id" class="form-control" onclick="this.form.submit()">
+                                <option value="0">Все товары</option>
+                                @foreach($categories as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                @endforeach
+                            </select>
+                        </form>
+                </div>
             </div>
         </div>
-        <div class="spacer-20"></div>
-        <!-- Start Related Properties -->
-        <h3>Товары
+        <p class="h4 text-center">Товары
             @if(Auth::check())
                 @if($shops->user_id == Auth::user()->id && $shops->canAddItem())
-                    <p class="primary" style="font-size: 18px">Уважаемые владельцы магазина, перед созданием товара, создайте категории для Ваших товаров.
-        Это можно сделать, нажав на кнопку "Добавить категорию товара".</p>
-                    @if(!empty($shops->items))
-                    <a href="{{ route('shopitems.show', ["shop_id"=>$shops->id])}}" class="btn btn-default btn-sm"> Все товары</a>
-                    @endif
-                    <a href="{{ url("shopitems/create", ["shop_id"=>$shops->id]) }}" class="btn btn-primary btn-sm">Добавить товар</a>
+                    <p class="primary" style="font-size: 11px; color: red;">* Уважаемые владельцы магазина,
+                        перед созданием товара, создайте категории для Ваших товаров.
+                        Это можно сделать, нажав на кнопку "Добавить категорию товара".</p>
+                <div class="btn-group">
 
+                    @if(Auth::check())
+                        @if($shops->user_id == Auth::user()->id)
+                            <a href="{{ route('shops.edit', ["id"=>$shops->id]) }}" type="button"
+                               class="btn btn-default"> Редактировать магазин</a>
+                        @endif
+                    @endif
+
+                    @if(!empty($shops->items))
+                        <a href="{{ route('shopitems.show', ["shop_id"=>$shops->id])}}" type="button"
+                           class="btn btn-default"> Все товары</a>
+                    @endif
+
+                        <a href="{{ url("/items_category", ["shop_id"=>$shops->id]) }}" type="button"
+                           class="btn btn-default">Все категории</a>
+
+                    <a href="{{ url("shopitems/create", ["shop_id"=>$shops->id]) }}" type="button"
+                       class="btn btn-default">Добавить товар</a>
 
                     <form action="{{ route('getShop') }}" method="post">
                         <input type="hidden" value="{{ $shops->id }}" name="shop_id">
-                        <button type="submit" class="btn btn-primary btn-sm">Добавить категорию товара</button>
+                        <button type="submit" class="btn btn-default" style="position: absolute;">Добавить категорию товара</button>
                     </form>
+                </div>
                 @endif
             @endif
-        </h3>
+        </p>
         <div ng-controller="CartCtrl">
             <div class="shop__cart" ng-show="cart.getTotalItems() > 0">
                 <div class="well" style="padding: 15px 25px 0px;">
@@ -126,7 +163,11 @@
                     <li class="grid-item type-rent">
                         <div class="property-block">
                             @if ($item->attachment)
-                                <img src="{{ $item->attachment->url }}?w=400&h=300" alt="">
+                                <a href="{{$item->attachment->url}}" rel="prettyPhoto[{{$item->id}}]">
+                                    {!! HTML::image($item->attachment->url.'?w=300&h=300&fit=crop', '',
+                                    ['class' => 'img-thumbnail img-responsive']) !!}
+                                </a>
+                                {{--<img src="{{ $item->attachment->url }}?w=200&h=200" class="img-thumbnail" alt="">--}}
                             @else
                                 <br />
                                 <h4 style="text-align: center">Изображение отсутствует</h4>
@@ -139,7 +180,9 @@
                                     @endif
                                 </h4>
                                 <hr>
-                                <h4>Описание: </h4> <p class="more">{{ $item->description }}</p>  <hr>
+                                <p class="h4">Описание: </p>
+                                <p class="description">{{ $item->description }}</p>
+                                <hr>
                                 <div class="price"><span>{{ $item->price }} <i class="fa fa-rub"></i></span></div>
                                 <div class="shop__cart-button" style="float:right">
                                     <input  type='text' ng-model='quantity' style="width: 30px">
@@ -170,3 +213,17 @@
         </div>
     </div>
 @stop
+
+@section('js')
+    <script>
+        $('.description').readmore(
+                {
+                    speed: 500,
+                    collapsedHeight: 140,
+                    lessLink: '<a href="#">Свернуть описание</a>',
+                    moreLink: '<a href="#">Открыть полное описание</a>',
+                    embedCSS: false
+                }
+        );
+    </script>
+@endsection

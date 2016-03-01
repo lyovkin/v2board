@@ -53,6 +53,7 @@ class ShopItemsController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param ShopItemsRequest $request
 	 * @return Response
 	 */
         public function store(ShopItemsRequest $request)
@@ -93,6 +94,8 @@ class ShopItemsController extends Controller {
 	 * Show the form for editing the specified resource.
 	 * @Get("/shopitems/{id}/edit", as="shopitems.edit")
 	 * @Middleware("auth")
+	 * @param $id
+	 * @return \Illuminate\View\View
 	 */
 	public function edit($id)
 	{
@@ -111,7 +114,10 @@ class ShopItemsController extends Controller {
 
 	/**
 	 * Update the specified resource in storage.
-     * @Middleware("auth")
+	 * @Middleware("auth")
+	 * @param Request $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function update(Request $request, $id)
 	{

@@ -69,7 +69,13 @@ class ItemsCategoryController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$categories = $categories = \DB::select("select cat.name, cat.id
+                                      from categories_shops d
+                                      join shops m on d.shop_id = m.id
+                             		  join items_category cat on d.category_id = cat.id
+                             		  where m.id = $id");
+
+		return view('items_category.index', compact('categories'));
 	}
 
 	/**
@@ -80,7 +86,9 @@ class ItemsCategoryController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$category = ItemsCategory::find($id);
+
+		return view('items_category.edit', compact('category'));
 	}
 
 	/**
@@ -91,7 +99,14 @@ class ItemsCategoryController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$category = ItemsCategory::find($id);
+		$category->name = \Request::input('name');
+		$category->description = \Request::input('description');
+		$category->save();
+
+		\Session::flash('message', 'Категория успешно обновлена.');
+
+		return redirect()->back();
 	}
 
 	/**
@@ -102,7 +117,9 @@ class ItemsCategoryController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		ItemsCategory::find($id)->delete();
+		\Session::flash('message', 'Категория успешно удалена.');
+		return redirect()->back();
 	}
 
 	public function getShop(Request $request)
