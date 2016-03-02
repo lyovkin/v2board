@@ -2,9 +2,14 @@
 @section('title')
 Профиль
 @stop
-@section('js')
 
-@stop
+@section('css')
+    <style>
+        .blacked-text {
+            color: #000;
+        }
+    </style>
+@endsection
 
 @section('content')
 <div class="col-md-7">
@@ -19,8 +24,7 @@
            <div class="alert alert-info">{{ Session::get('message') }}</div>
        @endif
     <div class="row">
-        <div class="col-md-3 col-sm-6">
-            {{--{{ dd($data->user->id) }}--}}
+        <div class="col-md-4 col-sm-6">
             @if($data->avatar)
                     <img class="img-thumbnail" alt="{{ $data->name }} {{ $data->last_name }}" src="{{ url('img', ['profile', $data->avatar->name ]) }}?w=160&h=160&fit=crop">
             @else
@@ -29,17 +33,14 @@
                 </a>
             @endif
         </div>
-
-
-
       <div class="col-md-7 col-sm-7">
         <div class="agent-contact-details">
-          <ul class="list-group">
+          <ul class="list-group blacked-text">
             <li class="list-group-item">
                 @if($data->city_id)
-                    <span style="float:right" >{{ $data->city->city_name }}</span>
+                    <span style="float:right" class="blacked-text">{{ $data->city->city_name }}</span>
                 @else
-                    <span style="float:right"><a href="/profile/{{$data->user->id}}/edit">Укажите город</a></span>
+                    <span style="float:right" class="blacked-text"><a href="/profile/{{$data->user->id}}/edit">Укажите город</a></span>
                 @endif
         
               Город 
@@ -49,7 +50,7 @@
                 @if($data->phone)
                     <span style="float:right" >{{ $data->phone}}</span>
                 @else
-                    <span style="float:right"> <a href="/profile/{{$data->user->id}}/edit">Укажите телефон</a></span>
+                    <span style="float:right"> <a href="/profile/{{$data->user->id}}/edit" class="blacked-text">Укажите телефон</a></span>
                 @endif
               Телефон 
             </li>
@@ -60,7 +61,7 @@
             </li>
             <li class="list-group-item">
                 <span style="float: right"><button class="btn btn-sm btn-default" style="padding: 3px 10px">
-                        <a href="http://chat.hlv24.ru/" style="text-decoration: none"> Начать чат</a></button></span>
+                        <a href="http://chat.hlv24.ru/" style="text-decoration: none" class="blacked-text"> Начать чат</a></button></span>
                 Чат
             </li>
               <li class="list-group-item">
@@ -70,11 +71,11 @@
               </li>
               <li class="list-group-item">
                   <span>
-                          <a style="text-decoration: none" href="{{route('profiles.payments')}}">История платежей</a>
+                          <a style="text-decoration: none" class="blacked-text" href="{{route('profiles.payments')}}">История платежей</a>
                       <i class="fa fa-cc-mastercard" style="float: right;"></i> </span>
 
               </li>
-            <li class="list-group-item">
+            <li class="list-group-item blacked-text">
               <div class="social-icons" style="margin-top: 0px">
 
                 <a href="{{$data->vkcom}}" style="background-color: white">
@@ -93,8 +94,8 @@
                   <i class="fa fa-envelope">
                   </i>
                 </a>
-                <a href=" /profile/{{$data->user->id}}/edit " style="background-color: white; float: right">  Редактировать профиль</a>
-
+                <a href=" /profile/{{$data->user->id}}/edit " style="background-color: white; float: right"
+                   class="blacked-text">  Редактировать профиль</a>
               </div>
             </li>
           </ul>
@@ -135,12 +136,12 @@
                                     {{ $ads->type->name }}
                                 </a>
                             </h4>
-                            <p>
-                                {{ mb_substr($ads->text, 0, 25) . (mb_strlen($ads->text) > 50 ? ' ..': '')}}
+                            <p class="blacked-text">
+                                {{ mb_substr($ads->text, 0, 75) . (mb_strlen($ads->text) > 50 ? ' ...': '')}}
                             </p>
             <span class="location">
                 @if($ads["city"]['city_name'])
-                    {{ $ads["city"]['city_name'] }}
+                   <span class="blacked-text">{{ $ads["city"]['city_name'] }}</span>
                 @else
                     Любой город
                 @endif

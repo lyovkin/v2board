@@ -101,7 +101,8 @@
                     <span class="h4 blacked-text" style="vertical-align: 10px;">Фильтр товаров по категориям</span>
                         <form action="{{url('filtered', ["id" => $shops->id])}}" method="post"
                               name="category" style="padding-bottom: 10px;">
-                            <select name="cat_id" class="form-control blacked-text" onclick="this.form.submit()">
+                            <select name="cat_id" class="form-control blacked-text" id="selectElementId">
+                                <option>Выберете категорию...</option>
                                 <option value="0">Все товары</option>
                                 @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -228,5 +229,12 @@
                     embedCSS: false
                 }
         );
+    </script>
+    <script>
+        $('#selectElementId').change(
+                function () {
+                    $(this).closest('form').trigger('submit');
+                }
+        )
     </script>
 @endsection
