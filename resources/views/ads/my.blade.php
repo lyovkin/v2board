@@ -2,7 +2,17 @@
 @section('title')
     Мои объявления
 @stop
+@section('css')
+    <style>
+        form.btn-group + form.btn-group {
+            margin-left: -5px;
+        }
+        .meta-data {
+            color: #000;
+        }
 
+    </style>
+@endsection
 @section('js')
     <script type="text/javascript">
         $(document).ready(function(){
@@ -29,21 +39,15 @@
         <div class="block-info">
             <h3>Неодобренные объявления выделены красным</h3>
             <h4>Сейчас у Вас  <span class="badge">{{ $user->ads_rise }}</span> поднятий</h4>
-
         </div>
-
         <br />
-        <div class="posts">
-
+        <div class="posts blacked-text">
                 @foreach($ads as $ad)
                     <article class="post">
-
                     <div class="row">
-
                             <input type="hidden" class="ads_id" name="ads_id" value="{{ $ad->id }}" />
                         @if(isset($ad->ads_attachment[0]))
                             <div class="col-md-4 col-sm-4">
-
                                     @foreach($ad->ads_attachment as $image)
                                         <a href="{{$image->url}}"
                                            rel="prettyPhoto[{{$ad->id}}]" title="This is the description">
@@ -51,20 +55,14 @@
                                         ['class' => 'img-thumbnail img-responsive']) !!}
                                             </a>
                                     @endforeach
-
                             </div>
                         @endif
-                            <div class="col-md-{{isset($ad->ads_attachment[0]) ? '8':'12'}}">
-
-
-                            <span class="post-meta meta-data {{ 0 == $ad->approved ? 'post-meta-red' : '' }}">
-
-                                 <span> <i class="fa fa-check-circle-o"><a href="{{ url('ads', $ad->id) }}" style="text-decoration: none"></a></i>{{$ad->type->name}}</span>
-                                <span><i class="fa fa-calendar"></i> {{$ad->created_at}}</span>
-                                <span><i class="fa fa-folder-open"></i>
-                                    <a
-                                            href="/category/{{$ad->category->alias}}" style="text-decoration: none;">{{$ad->category->title}}</a>
-
+                            <div class="col-md-{{ isset($ad->ads_attachment[0]) ? '8':'12' }}">
+                                <span class="post-meta meta-data {{ 0 == $ad->approved ? 'post-meta-red' : '' }}">
+                                <span> <i class="fa fa-check-circle-o"><a href="{{ url('ads', $ad->id) }}" style="text-decoration: none"></a></i>{{$ad->type->name}}</span>
+                                <span><i class="fa fa-clock-o"></i> {{$ad->created_at->format('d/m/Y H:i:s')}}</span>
+                                <span><i class="fa fa-tags"></i>
+                                    <a href="/category/{{$ad->category->alias}}" style="text-decoration: none; color: #000">{{$ad->category->title}}</a>
                                 </span>
                                 @if($ad->price)
                                     <span><i class="fa fa-rub"></i>{{$ad->price}}</span>
@@ -82,7 +80,7 @@
                                         {!! Form::open(['route' => 'favorites.store']) !!}
                                               {!! Form::hidden('advertisement_id', $ad->id) !!}
                                    @endif
-                                           <button type="submit" class="btn-naked"><span class="naked-text"> В избранное</span>
+                                           <button type="submit" class="btn-naked"><span class="naked-text" style="color: #000;"> В избранное</span>
                                                <i class="fa fa-heart fa-2x {{in_array($ad->id, $favorites) ? 'favorited' : 'not-favorited' }}"></i>
                                            </button>
                                          {!! Form::close() !!}
@@ -113,28 +111,30 @@
                                     {!! Form::close() !!}
                                 </span>
                                 @endif
-                               <!--  <span><a href="#"><i class="fa fa-comment"></i> 12</a></span> -->
                                 </span>
 
-                                <p class='row-content'>{{$ad->text}}</p>
+                                <p class="row-content" style="color: #000;">{{$ad->text}}</p>
 
-                                <a href="{{ url('ads', $ad->id) }}" class="btn btn-primary btn-sm">Смотреть
-                                        <i class="fa fa-long-arrow-right"></i></a>
+                                <div class="btn-group">
+                                    <a href="{{ url('ads', $ad->id) }}" class="btn btn-default btn-sm" type="button">Смотреть</a>
 
-                                {!! Form::open(array('url' => 'ads/' . $ad->id , 'style' => 'float:right')) !!}
+                                    <a href="{{ action('AdsController@edit', $ad->id) }}" class="btn btn-default btn-sm"
+                                       type="button">Редактировать</a>
+
+                                    <a href="http://vk.com/share.php?url={{ url('ads', $ad->id) }}" type="button"
+                                       target="_blank" class="btn btn-default btn-sm">Поделиться в <i class="fa fa-vk"></i></a>
+                                </div>
+
+                                {!! Form::open(array('url' => 'ads/' . $ad->id, 'class' => 'btn-group', 'style' => 'margin-left: 9px;')) !!}
                                 {!! Form::hidden('_method', 'DELETE') !!}
-                                <button type="submit" class="btn btn-danger btn-sm"> Удалить <i class="fa fa-remove"></i> </button>
+                                <button type="submit" class="btn btn-default btn-sm">Удалить</button>
                                 {!! Form::close() !!}
 
-                                <a href="{{ action('AdsController@edit', $ad->id) }}" class="btn btn-primary btn-sm" style="margin-right: 10px; float: right; background-color: #428bca; ">Редактировать <i class="fa fa-refresh"></i></a>
-
                                 @if($ad->approved == 1)
-                                    {!! Form::open(['url'=>["ads/$ad->id/unpublish"],'role'=>'form', 'method' => 'POST', 'style' => 'float:right; margin-right:10px']) !!}
-                                    <button type="submit" class="btn btn-warning btn-sm" > Снять <i class="fa fa-warning"></i> </button>
+                                    {!! Form::open(['url'=>["ads/$ad->id/unpublish"],'role'=>'form', 'method' => 'POST', 'class' => 'btn-group inline']) !!}
+                                    <button type="submit" class="btn btn-default btn-sm">Снять</button>
                                     {!! Form::close() !!}
                                 @endif
-
-
                                 <hr>
                             </div>
                         </div>
