@@ -219,10 +219,6 @@ return [
          */
         'ZaWeb\Shops\ShopsServiceProvider',
 
-        /**
-         * Chat package
-         */
-        'ZaWeb\Chat\ChatServiceProvider',
 
         /**
          * Views composers
