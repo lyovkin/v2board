@@ -75,6 +75,8 @@ Route::group(['middleware' => 'auth'], function()
 Route::get('shops_category', 'ShopCategoriesController@index');
 Route::post('shops_category', 'ShopCategoriesController@filter');
 
+//Route::get('shops/{id}/mass_upload', 'ZaWeb\Shops\Http\Controllers\ShopController@massUpload');
+
 /*
  * Items category
  */

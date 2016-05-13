@@ -63,6 +63,8 @@ class ShopItemsController extends Controller {
             return redirect()->route('shops.my');
         }
 
+		$request->file();
+
 		$file = ImageUploadFacade::attachmentUpload($request->file('attachment'), new Attachment(), 'shop_items');
 
 		$item = new ShopItems();
@@ -131,7 +133,7 @@ class ShopItemsController extends Controller {
             $item->attachment()->associate($attachment);
         }
         $item->save();
-        return redirect()->route('shops.index');
+        return redirect()->away("/shopitems/$request->shop_id");
 	}
 
 	/**
@@ -142,7 +144,7 @@ class ShopItemsController extends Controller {
 	public function destroy($id)
 	{
 		ShopItems::find($id)->delete();
-        return redirect()->route('shops.index');
+        return back();
 	}
 
 }

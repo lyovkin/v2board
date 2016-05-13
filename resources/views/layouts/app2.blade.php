@@ -190,6 +190,26 @@
     <a id="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 </div>
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Загрузка завершена</h4>
+            </div>
+            <div class="modal-body">
+                <p>Данные загружены.</p>
+                <p>Вы можете перейти к магазинам и отредактировать созданные товары, или остаться и продолжать загружать товары.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Остаться</button>
+                <a href="{{ url("/shops/my") }}" type="button" class="btn btn-primary">Перейти к магазинам</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script type="text/javascript">(function() {
         if (window.pluso)if (typeof window.pluso.start == "function") return;
         if (window.ifpluso==undefined) { window.ifpluso = 1;

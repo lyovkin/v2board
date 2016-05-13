@@ -4,6 +4,12 @@
     Все товары
 @endsection
 
+@section('css')
+    <style>
+        
+    </style>
+@endsection
+
 @section('content')
         <div class="col-sm-10">
             <a href="{{ url('/shops/my') }}"> Назад к магазинам</a>
@@ -13,12 +19,12 @@
             <div class="col-lg-4">
                 <div class="well">
                     <h4><span class="label label-success">Товар создан: {{ $item->created_at }}</span></h4>
-                    <h4><span class=""><strong>Категория товара:</strong> {{ upperFirstLetter($item->category->name) }}</span></h4>
+
                     <h4><span class=""><strong>Название товара:</strong> {{ upperFirstLetter($item->name) }}</span></h4>
                     <h4><strong>Описание:</strong> </h4> <p class="more">{{ $item->description }}</p>
                     <hr>
                     @if ($item->attachment)
-                        <img src="{{ $item->attachment->url }}?w=400&h=300" alt="">
+                        <img src="{{ $item->attachment->url }}" class="thumbnail" alt="">
                     @else
                         Изображение отсутствует
                     @endif

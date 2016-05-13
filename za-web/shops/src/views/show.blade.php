@@ -142,6 +142,9 @@
                         <input type="hidden" value="{{ $shops->id }}" name="shop_id">
                         <button type="submit" class="btn btn-default" style="position: absolute;">Добавить категорию товара</button>
                     </form>
+
+                    <a href="{{ url("shops/$shops->id/mass_upload") }}" type="button" class="btn btn-default">Массовое заполнение товаров</a>
+
                 </div>
                 @endif
             @endif

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\Attachment;
+use App\Models\ShopCategories;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -372,5 +373,58 @@ class ShopController extends Controller
                              		  where m.id = $shop_id");
 
         return view('shops::show', compact('shops', 'items', 'categories'));
+    }
+
+    /**
+     * @GET("shops/{shops}/mass_upload", middleware="auth")
+     * @param Shops $shops
+     * @return \Illuminate\View\View
+     */
+    public function massUpload(Shops $shops)
+    {
+        $categories = ShopCategories::getShopCategories($shops->id);
+
+        //\Session::put('s_id', $shops->id);
+
+        return view('shops::mass_upload', compact('shops', 'categories'));
+    }
+
+    /**
+     * @POST("shops/get_photos", middleware="auth")
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getPhotos(Request $request)
+    {
+        if($request->s_id) {
+
+            $shop_id = $request->s_id;
+            \Session::put('shop_id', $shop_id);
+
+        } else {
+
+            $s_id = \Session::get('shop_id');
+
+            $shop = Shops::find($s_id);
+
+            if ($shop && !$shop->canAddItem()) {
+                return redirect()->route('shops.my');
+            }
+
+            $file = ImageUploadFacade::attachmentUpload($request->file("file"), new Attachment(), 'shop_items');
+
+            $item = new ShopItems();
+            $item->name = 'Название';
+            $item->description = 'Описание';
+            $item->shop_id = $s_id;
+
+            if ($file) {
+                $item->attachment()->associate($file);
+            }
+
+            $item->save();
+        }
+
+        //return redirect()->route('shops.show', ['id'=>$request->id]);
     }
 }

@@ -1,4 +1,6 @@
 var elixir = require('laravel-elixir');
+var gulp = require('gulp');
+var concat = require('gulp-concat');
 
 /*
  |----------------------------------------------------------------
@@ -51,5 +53,16 @@ elixir(function(mix) {
             'bower_components/ngcart/dist/ngCart.min.js',
         ], 'public/js/components.js', 'vendor/')
     });
+
+    var bower_path = './vendor/bower_components/';
+
+    gulp.task('mix-flow-js', function() {
+
+        return gulp.src([bower_path + 'flow.js/dist/flow.min.js', bower_path + 'ng-flow/dist/ng-flow.min.js'])
+            .pipe(concat('ng-flow-standalone.min.js'))
+            .pipe(gulp.dest('public/js/ng-flow/'));
+
+    });
+
 
 });

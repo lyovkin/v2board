@@ -2,7 +2,6 @@
 
 namespace App\Services\Image;
 
-
 use App\Models\Attachment;
 use App\Models\UploadInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
