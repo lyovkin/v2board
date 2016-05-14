@@ -40,7 +40,7 @@
               @if(count($ads->ads_attachment))
               <div class="property-slider">
                 <div id="property-images" class="flexslider">
-                  <ul class="slides">
+                  <ul class="slides" style="text-align: center;">
                     @foreach($ads->ads_attachment as $attachment)
                       <li class="item" >
                       {!! HTML::image( url('img', ['advertisements', $attachment->name]), $attachment->comment, ['class'=>'slide-image'])!!} 
@@ -165,28 +165,3 @@
            @endif
              </div>
 @stop
-<!---
- <div class="col-md-8 posts-archive">
-       <header class="single-post-header clearfix">
-              <h2 class="post-title">{#{ $ads->title }#</h2>
-            </header>
-            <article class="post-content">
-                  <div class="post-meta meta-data">
-                      <span><i class="fa fa-calendar"></i>{# $ads->created_at #}</span>
-                      <span><i class="fa fa-user"></i>
-                          <a href="{# url('profile', $ads->user->user_name) #}">
-                              {# $ads->user->user_name #}
-                          </a>
-                      </span>
-                    <span><i class="fa fa-tag"></i> Category: <a href="#">{# $ads->category->title #} </a></span>
-                    <span><a href="#comments"><i class="fa fa-comment"></i> 188 Comments</a></span>
-                </div>
-              <div class="featured-image"> <img src="/uploads/ads_attachments/{# $ads->ads_attachment[0]->name #}" alt=""> </div>
-              <p class="row-content">
-                  {# $ads->text #}
-              </p>
-            </article>
-      
-         
-    </div>
- -->
