@@ -180,7 +180,7 @@
                                 <h4 style="text-align: center">Изображение отсутствует</h4>
                             @endif
 
-                            <div class="property-info">
+                            <div class="property-info" style="word-wrap: break-word;">
                                 <h4 style="color: red">{{ $item->name }}
                                     @if($item->art_number)
                                         <span style="float: right; font-size: small">Артикул № <strong>{{ $item->art_number }}</strong></span>
@@ -188,7 +188,7 @@
                                 </h4>
                                 <hr>
                                 <p class="h4 blacked-text">Описание: </p>
-                                <p class="description blacked-text">{{ $item->description }}</p>
+                                <p class="description blacked-text" style="">{{ $item->description }}</p>
                                 <hr>
                                 <div class="price"><span>{{ $item->price }} <i class="fa fa-rub"></i></span></div>
                                 <div class="shop__cart-button" style="float:right">

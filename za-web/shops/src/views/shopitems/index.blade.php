@@ -17,7 +17,7 @@
         </div>
         @foreach($shops->items as $item)
             <div class="col-lg-4">
-                <div class="well">
+                <div class="well" style="word-wrap: break-word">
                     <h4><span class="label label-success">Товар создан: {{ $item->created_at }}</span></h4>
 
                     <h4><span class=""><strong>Название товара:</strong> {{ upperFirstLetter($item->name) }}</span></h4>
