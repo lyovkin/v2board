@@ -1,5 +1,5 @@
 @if($special)
-<div class="flex-caption">
+<div class="flex-caption" style="border-top: 0;">
     <strong class="title">{{ $special->text }}</strong>
     @if ($special->price)
         <div class="price"><strong><i class="fa fa-rub"></i></strong><span>{{ $special->price }}</span></div>
