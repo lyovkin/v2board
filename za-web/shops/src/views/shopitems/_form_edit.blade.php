@@ -19,7 +19,7 @@
 
 <div class="form-group">
     {!! Form::label('art_number', 'Артикульный номер') !!}
-    {!! Form::text('art_number', old('art_number'), ['class'=>'form-control', 'placeholder'=>'Артикул №', 'pattern' => '[0-9]+']) !!}
+    {!! Form::text('art_number', old('art_number'), ['class'=>'form-control', 'placeholder'=>'Артикул №', 'pattern' => '[0-9.-]+']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('description', 'Описание') !!}
