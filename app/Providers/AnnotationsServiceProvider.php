@@ -36,9 +36,7 @@ class AnnotationsServiceProvider extends ServiceProvider {
         'ZaWeb\Shops\Http\Controllers\ShopItemsController',
         'ZaWeb\Chat\Http\Controllers\ChatController',
         'ZaWeb\Chat\Http\Controllers\MessagesController',
-
-
-
+        'App\Http\Controllers\UploadVKItemsController',
     ];
 
     /**

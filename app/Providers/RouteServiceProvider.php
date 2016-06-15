@@ -23,6 +23,7 @@ class RouteServiceProvider extends ServiceProvider {
         'App\Http\Controllers\CountryController',
         'App\Http\Controllers\ProfileController',
         'App\Http\Controllers\LanguageController',
+		'App\Http\Controllers\UploadVKItemsController',
         'AppAdmin\Http\Controllers\AdminAdvertisementController',
         'AppAdmin\Http\Controllers\AdminController',
         'AppAdmin\Http\Controllers\PageNameController',
