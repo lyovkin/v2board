@@ -11,7 +11,7 @@ return [
 
     'display' => 'page',
 
-    'redirect_uri' => 'https://oauth.vk.com/blank.html',
+    'redirect_uri' => 'http://hlv24.ru/upload_vk_items',
 
     'response_type' => 'token',
 
