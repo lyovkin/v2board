@@ -22,7 +22,9 @@ class UploadVKItemsController extends Controller {
      */
     public function index()
     {
-        return view('upload_vk_items.index');
+        $user_shops = Shops::with('profile')->where('user_id', \Auth::user()->id)->get()->toArray();
+
+        return view('upload_vk_items.index', compact('user_shops'));
     }
 
     /**
@@ -39,15 +41,14 @@ class UploadVKItemsController extends Controller {
     /**
      * @POST("/upload_vk_items")
      * @param Request $request
-     * @deprecated
      */
-    /*public function getAlbumId(Request $request)
+    public function getAlbumId(Request $request)
     {
         \Session::set('album_id', $request->input('album_id'));
         \Session::set('user_id', $request->input('user_id'));
         \Session::set('access_token', $request->input('access_token'));
         \Session::set('shop_id', $request->input('shop_id'));
-    }*/
+    }
 
     /**
      * @POST("/uploading_data")
