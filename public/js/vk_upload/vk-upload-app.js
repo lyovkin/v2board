@@ -19,6 +19,9 @@ app.controller('vkUploadCtrl', function($scope, $http, $location) {
     var url_vk = 'https://api.vk.com';
     var user_id = $location.search().user_id;
     var access_token = $location.search().access_token;
+
+    console.log(user_id);
+    console.log(access_token);
     //var user_id = 12965861;
     //var access_token = '08de01813a19a13981a242afe061977a76239e52db257d2d204e9137770268fc537ac8870e6e425ae905732ac2874';
 
