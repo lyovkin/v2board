@@ -144,10 +144,10 @@
                     </form>
                     <a href="{{ url("shops/$shops->id/mass_upload") }}" type="button" class="btn btn-default">Массовое заполнение товаров</a>
                         {{-- Oauth VK button--}}
-                    <a href="{{ Config::get('vk.url').'client_id='.Config::get('vk.client_id').'&display='.Config::get('vk.display')
+                    {{--<a href="{{ Config::get('vk.url').'client_id='.Config::get('vk.client_id').'&display='.Config::get('vk.display')
                      .'&redirect_uri='.Config::get('vk.redirect_uri').'&scope='.Config::get('vk.scope').'&response_type='
                      .Config::get('vk.response_type').'&v='.Config::get('vk.v')}}"
-                       type="button" class="btn btn-default">Заполнение товаров из <span class="fa fa-vk"></span> </a>
+                       type="button" class="btn btn-default">Заполнение товаров из <span class="fa fa-vk"></span> </a>--}}
                         {{--end button--}}
                 </div>
                 @endif
