@@ -20,8 +20,8 @@ app.controller('vkUploadCtrl', function($scope, $http, $location) {
     var url = $location.absUrl(), access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
     var u_id = $location.absUrl(), user_id = u_id.match(/user_id=([^&]+)/)[1];
 
-    console.log(user_id);
-    console.log(access_token);
+    //console.log(user_id);
+    //console.log(access_token);
     //var user_id = 12965861;
     //var access_token = '08de01813a19a13981a242afe061977a76239e52db257d2d204e9137770268fc537ac8870e6e425ae905732ac2874';
 

@@ -52,6 +52,7 @@ class UploadVKItemsController extends Controller {
             '&access_token='.$access_token);
 
         $photos = json_decode($photos_raw, true);
+        dd($photos);
 
         if ($request->input('shop_id')) {
             $shop_id = $request->input('shop_id');
