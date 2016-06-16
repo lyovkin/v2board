@@ -22,37 +22,42 @@ class UploadVKItemsController extends Controller {
      */
     public function index()
     {
-        $user_shops = User::getUserShops();
+        return view('upload_vk_items.index');
+    }
 
-        return view('upload_vk_items.index', compact('user_shops'));
+    /**
+     * @GET("/get_user_shops")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function get_user_shops()
+    {
+        $user_shops = Shops::with('profile')->where('user_id', \Auth::user()->id)->get()->toArray();
+
+        return response()->json($user_shops);
     }
 
     /**
      * @POST("/upload_vk_items")
      * @param Request $request
+     * @deprecated
      */
-    public function getAlbumId(Request $request)
+    /*public function getAlbumId(Request $request)
     {
         \Session::set('album_id', $request->input('album_id'));
         \Session::set('user_id', $request->input('user_id'));
         \Session::set('access_token', $request->input('access_token'));
-    }
+        \Session::set('shop_id', $request->input('shop_id'));
+    }*/
 
     /**
      * @POST("/uploading_data")
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function uploading_data(Request $request)
     {
-        $user_id = \Session::get('user_id');
-        $album_id = \Session::get('album_id');
-        $access_token = \Session::get('access_token');
 
-        $photos_raw = file_get_contents('https://api.vk.com/method/photos.get?owner_id='.$user_id.'&album_id='.$album_id.
-            '&access_token='.$access_token);
-
-        $photos = json_decode($photos_raw, true);
-        dd($photos);
+        $photos = $request->input('photos');
 
         if ($request->input('shop_id')) {
             $shop_id = $request->input('shop_id');
@@ -83,8 +88,6 @@ class UploadVKItemsController extends Controller {
                 }
             }
         }
-
-        //dd(json_decode($photos, true));
     }
 
 }

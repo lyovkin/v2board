@@ -98,7 +98,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="sel1">Выберете альбом для выгрузки:</label>
-                    <select class="form-control" id="sel1" ng-model="selectedAlbum">
+                    <select class="form-control" id="sel1" required="required" ng-model="selectedAlbum">
                         <option ng-repeat="album in albums" value="[[album.aid]]">[[ album.title ]]</option>
                     </select>
                 </div>
@@ -106,14 +106,12 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="sel2">Выберете магазин для загрузки:</label>
-                    <select class="form-control" id="sel2" name="shop_id">
-                        @foreach($user_shops as $shops)
-                            <option value="{{ $shops->id }}">{{$shops->profile->name}}</option>
-                        @endforeach
+                    <select class="form-control" id="sel2" name="shop_id" ng-model="selectedShop">
+                        <option ng-repeat="shop in shops" value="[[ shop.id ]]">[[ shop.profile.name ]]</option>
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-default" style="margin-left: 15px;">Загрузить</button>
+            <button type="button" class="btn btn-default" style="margin-left: 15px;" ng-click="upload_photos()">Загрузить</button>
             </form>
         </div>
     </div>
