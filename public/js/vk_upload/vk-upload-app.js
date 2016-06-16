@@ -17,8 +17,8 @@ app.config(function($interpolateProvider, $locationProvider) {
 app.controller('vkUploadCtrl', function($scope, $http, $location) {
 
     var url_vk = 'https://api.vk.com';
-    var user_id = $location.search().user_id;
-    var access_token = $location.search().access_token;
+    var url = $location.absUrl(), access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
+    var u_id = $location.absUrl(), user_id = u_id.match(/user_id=([^&]+)/)[1];
 
     console.log(user_id);
     console.log(access_token);
