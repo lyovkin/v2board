@@ -57,4 +57,6 @@ class Shops extends Model
     {
         return $this->belongsTo('App\Models\Cities', 'city_id', 'id');
     }
+
+
 }

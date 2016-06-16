@@ -92,4 +92,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->belongsToMany('App\Models\Advertisement', 'favorites')->withTimestamps();
     }
+
+    public function shops()
+    {
+        return $this->hasMany('ZaWeb\Shops\Models\Shops');
+    }
+
+    public static function getUserShops()
+    {
+        return \Auth::user()->shops;
+    }
+
 }

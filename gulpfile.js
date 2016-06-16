@@ -50,7 +50,7 @@ elixir(function(mix) {
             'bower_components/angular-resource/angular-resource.min.js',
 
             'bower_components/jquery/dist/jquery.min.js',
-            'bower_components/ngcart/dist/ngCart.min.js',
+            'bower_components/ngcart/dist/ngCart.min.js'
         ], 'public/js/components.js', 'vendor/')
     });
 
@@ -61,6 +61,13 @@ elixir(function(mix) {
         return gulp.src([bower_path + 'flow.js/dist/flow.min.js', bower_path + 'ng-flow/dist/ng-flow.min.js'])
             .pipe(concat('ng-flow-standalone.min.js'))
             .pipe(gulp.dest('public/js/ng-flow/'));
+
+    });
+
+    gulp.task('ng-md5', function() {
+
+        return gulp.src(bower_path + 'angular-md5/angular-md5.min.js')
+            .pipe(gulp.dest('public/js/ng-md5/'));
 
     });
 
