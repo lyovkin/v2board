@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var app = angular.module('vk-upload-app', []);
+var app = angular.module('vk-upload-app', ['ngFlash']);
 
 app.config(function($interpolateProvider, $locationProvider) {
     $interpolateProvider.startSymbol('[[');
@@ -14,7 +14,12 @@ app.config(function($interpolateProvider, $locationProvider) {
     });
 });
 
-app.controller('vkUploadCtrl', function($scope, $http, $location) {
+app.controller('vkUploadCtrl', function($scope, $http, $location, Flash, $timeout) {
+
+    $scope.successAlert = function () {
+        var message = '<strong> Загрузка товаров завершена!</strong>';
+        var id = Flash.create('success', message, 0, {class: 'custom-class', id: 'custom-id'}, true);
+    };
 
     var url_vk = 'https://api.vk.com';
     var url = $location.absUrl(), access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
@@ -25,6 +30,7 @@ app.controller('vkUploadCtrl', function($scope, $http, $location) {
 
     $scope.selectedAlbum = '';
     $scope.selectedShop = '';
+    $scope.photos_albums = '';
 
     $http.get('/get_user_shops')
         .then(function (response) {
@@ -56,6 +62,13 @@ app.controller('vkUploadCtrl', function($scope, $http, $location) {
                 .then(function () {
                     console.log('Done');
                 });
+            //Get photos
+            $http.jsonp(url_vk+'/method/photos.get?owner_id='+user_id+'&album_id='+$scope.selectedAlbum+'&access_token='+access_token+'&callback=JSON_CALLBACK')
+                .then(function (response) {
+                    var data = response.data;
+                    $scope.photos_albums = data.response;
+                    //console.log($scope.photos_albums);
+                })
         }
     });
 
@@ -65,10 +78,13 @@ app.controller('vkUploadCtrl', function($scope, $http, $location) {
                 var photos = response.data;
                 $http.post('/uploading_data', {'photos': photos, 'shop_id': $scope.selectedShop})
                     .then(function () {
-                        console.log('Done');
+                        $timeout( function() {
+                            Flash.clear();
+                        }, 6000);
+
                     });
                 //console.log(photos.response);
-            })
+            });
 
     }
 

@@ -11,7 +11,7 @@ return [
 
     'display' => 'page',
 
-    'redirect_uri' => 'http://hlv24.ru/upload_vk_items',
+    'redirect_uri' => 'http://board/upload_vk_items',
 
     'response_type' => 'token',
 

@@ -69,7 +69,11 @@
             color: #656565;
             font-size: 12px;
         }
+        .error {
+            color: red;
+        }
     </style>
+    <link rel="stylesheet" href="/css/angular-flash.css" />
 @endsection
 
 @if (Session::has('message'))
@@ -80,6 +84,8 @@
     <div class="wrapper" ng-app="vk-upload-app" ng-cloak="">
         <div class="col-md-7" ng-controller="vkUploadCtrl">
             <div class="row">
+                <flash-message duration="5000"
+                               show-close="true"></flash-message>
                 <div class="col-md-6">
                     <div class="testimonials">
                         <div class="active item">
@@ -94,24 +100,41 @@
                 </div>
             </div>
             <hr>
-            <form method="post" action="/uploading_data">
+            <form method="post" name="form" action="/uploading_data">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="sel1">Выберете альбом для выгрузки:</label>
-                    <select class="form-control" id="sel1" required="required" ng-model="selectedAlbum">
+                    <select class="form-control" id="sel1" name="albums"
+                            ng-model="selectedAlbum" required>
+                        <option value="" selected>Выберете альбом для выгрузки</option>
                         <option ng-repeat="album in albums" value="[[album.aid]]">[[ album.title ]]</option>
                     </select>
+                    <span class="error" ng-show="form.albums.$error.required">Выберете альбом</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="sel2">Выберете магазин для загрузки:</label>
-                    <select class="form-control" id="sel2" name="shop_id" ng-model="selectedShop">
+                    <select class="form-control" id="sel2" name="shop_id"
+                            ng-model="selectedShop" required>
+                        <option value="" selected>Выберете магазин для загрузки</option>
                         <option ng-repeat="shop in shops" value="[[ shop.id ]]">[[ shop.profile.name ]]</option>
                     </select>
+                    <span class="error" ng-show="form.shop_id.$error.required">Выберете магазин</span>
                 </div>
             </div>
-            <button type="button" class="btn btn-default" style="margin-left: 15px;" ng-click="upload_photos()">Загрузить</button>
+            <button
+                    ng-show="selectedAlbum != '' && selectedShop != ''" type="button" class="btn btn-default" style="margin-left: 15px;"
+                    ng-click="upload_photos(); successAlert(); ">Загрузить</button>
+
+                <div class="row" style="margin-left: 0; margin-top: 25px;">
+                        <div class="col-md-4" ng-repeat="photo in photos_albums">
+                            <img ng-src="[[photo.src_big]]"
+                                 ng-hide="photo.error_code == 100"
+                                 class="thumbnail" style="width:200px;height:200px">
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -119,4 +142,5 @@
 
 @section('js')
     <script src="/js/vk_upload/vk-upload-app.js"></script>
+    <script src="/js/angular-flash.js"></script>
 @endsection
