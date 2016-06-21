@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Attachment;
+use App\Models\ItemsCategory;
+use App\Models\ShopCategories;
 use App\Models\User;
 use Illuminate\Http\Request;
 use ZaWeb\Shops\Models\ShopItems;
@@ -59,6 +61,7 @@ class UploadVKItemsController extends Controller {
     {
 
         $photos = $request->input('photos');
+        $category_id = $request->input('category_id');
 
         if ($request->input('shop_id')) {
             $shop_id = $request->input('shop_id');
@@ -80,6 +83,7 @@ class UploadVKItemsController extends Controller {
                     $shop_item->name = 'Название';
                     $shop_item->description = $item['text'];
                     $shop_item->shop_id = $shop_id;
+                    $shop_item->category_id = $category_id;
 
                     if ($attachment) {
                         $shop_item->attachment()->associate($attachment);
@@ -89,6 +93,23 @@ class UploadVKItemsController extends Controller {
                 }
             }
         }
+    }
+
+    /**
+     * @GET("/get_user_categories")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function get_categories()
+    {
+        $user_shops = \DB::table('shops')->where('user_id', \Auth::user()->id)->lists('id');
+
+        $categories = \DB::table('items_category')
+            ->join('categories_shops', 'items_category.id', '=', 'categories_shops.category_id')
+            ->select('items_category.id', 'items_category.name')
+            ->whereIn('shop_id', $user_shops)
+            ->get();
+
+        return response()->json($categories);
     }
 
 }
