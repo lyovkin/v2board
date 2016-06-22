@@ -99,7 +99,7 @@
                         {!! Form::close() !!}
                     </div>
 
-                    <div class="pluso" style="margin: 4px; margin-top: 21px;" data-background="transparent" data-options="medium,square,line,horizontal,counter,theme=07" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
+                    <div class="pluso" style=" margin-top: 21px;" data-background="transparent" data-options="medium,square,line,horizontal,counter,theme=07" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
 
                         <div class="contact-info-blocks hidden-sm hidden-xs">
 
