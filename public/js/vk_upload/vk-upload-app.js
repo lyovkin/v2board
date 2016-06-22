@@ -31,7 +31,6 @@ app.controller('vkUploadCtrl', function($scope, $http, $location, Flash, $timeou
     $scope.selectedGroupAlbum = '';
 
     $scope.selectedAlbum = '';
-    $scope.selectedShop = '';
 
     $scope.selectedCategory = '';
 
@@ -42,19 +41,17 @@ app.controller('vkUploadCtrl', function($scope, $http, $location, Flash, $timeou
      */
     $http.get('/get_user_shops')
         .then(function (response) {
-           $scope.shops = response.data;
+           $scope.shop = response.data;
         });
 
     /**
      * Get shops categories
      */
-    $scope.$watch('selectedShop', function () {
-        $http.get('/get_user_categories')
-            .then(function (response) {
-                $scope.shops_categories = response.data;
-            });
-    });
-
+    $http.get('/get_user_categories')
+        .then(function (response) {
+            $scope.shops_categories = response.data;
+            console.log($scope.shops_categories);
+        });
 
     /**
      * Get information about user
@@ -121,15 +118,12 @@ app.controller('vkUploadCtrl', function($scope, $http, $location, Flash, $timeou
     /**
      * If selected user album and user shop, run request to backend, and store data in session
      */
-    $scope.$watchGroup(['selectedAlbum', 'selectedShop'], function () {
+    $scope.$watch('selectedAlbum', function () {
         if($scope.selectedAlbum == undefined) {
             $scope.selectedAlbum = '';
         }
-        if($scope.selectedShop == undefined) {
-            $scope.selectedShop = '';
-        }
         if($scope.selectedAlbum != null) {
-            $http.post('/upload_vk_items', {'album_id': $scope.selectedAlbum, 'shop_id': $scope.selectedShop,
+            $http.post('/upload_vk_items', {'album_id': $scope.selectedAlbum, 'shop_id': $scope.shop,
                 'user_id': user_id, 'access_token': access_token})
                 .then(function () {
 
@@ -153,7 +147,7 @@ app.controller('vkUploadCtrl', function($scope, $http, $location, Flash, $timeou
         $http.jsonp(url_vk+'/method/photos.get?owner_id='+user_id+'&album_id='+$scope.selectedAlbum+'&access_token='+access_token+'&callback=JSON_CALLBACK')
             .then(function (response) {
                 var photos = response.data;
-                $http.post('/uploading_data', {'photos': photos, 'shop_id': $scope.selectedShop, 'category_id': $scope.selectedCategory})
+                $http.post('/uploading_data', {'photos': photos, 'shop_id': $scope.shop, 'category_id': $scope.selectedCategory})
                     .then(function () {
                         $timeout( function() {
                             Flash.clear();
@@ -171,7 +165,7 @@ app.controller('vkUploadCtrl', function($scope, $http, $location, Flash, $timeou
         $http.jsonp(url_vk+'/method/photos.get?owner_id='+selectedAlbum.owner_id+'&album_id='+selectedAlbum.aid+'&access_token='+access_token+'&callback=JSON_CALLBACK')
             .then(function (response) {
                 var photos = response.data;
-                $http.post('/uploading_data', {'photos': photos, 'shop_id': $scope.selectedShop, 'category_id': $scope.selectedCategory})
+                $http.post('/uploading_data', {'photos': photos, 'shop_id': $scope.shop, 'category_id': $scope.selectedCategory})
                     .then(function () {
                         $timeout( function() {
                             Flash.clear();

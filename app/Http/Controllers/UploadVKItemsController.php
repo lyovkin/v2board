@@ -35,7 +35,7 @@ class UploadVKItemsController extends Controller {
      */
     public function get_user_shops()
     {
-        $user_shops = Shops::with('profile')->where('user_id', \Auth::user()->id)->get()->toArray();
+        $user_shops = \Session::get('shop_id');
 
         return response()->json($user_shops);
     }
@@ -49,7 +49,7 @@ class UploadVKItemsController extends Controller {
         \Session::set('album_id', $request->input('album_id'));
         \Session::set('user_id', $request->input('user_id'));
         \Session::set('access_token', $request->input('access_token'));
-        \Session::set('shop_id', $request->input('shop_id'));
+        //\Session::set('shop_id', $request->input('shop_id'));
     }
 
     /**
@@ -75,8 +75,8 @@ class UploadVKItemsController extends Controller {
                 foreach ($photo as $item) {
                     $attachment = new Attachment();
                     $attachment->name = $item['aid'];
-                    $attachment->path = $item['src_xbig'];
-                    $attachment->url = $item['src_xbig'];
+                    $attachment->path = $item['src_big'];
+                    $attachment->url = $item['src_big'];
                     $attachment->save();
 
                     $shop_item = new ShopItems();
@@ -101,12 +101,12 @@ class UploadVKItemsController extends Controller {
      */
     public function get_categories()
     {
-        $user_shops = \DB::table('shops')->where('user_id', \Auth::user()->id)->lists('id');
+        $shop_id = \Session::get('shop_id');
 
         $categories = \DB::table('items_category')
             ->join('categories_shops', 'items_category.id', '=', 'categories_shops.category_id')
             ->select('items_category.id', 'items_category.name')
-            ->whereIn('shop_id', $user_shops)
+            ->where('shop_id', $shop_id)
             ->get();
 
         return response()->json($categories);

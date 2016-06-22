@@ -207,6 +207,8 @@ class ShopController extends Controller
                              		  join items_category cat on d.category_id = cat.id
                              		  where m.id = $shop_id");
 
+        \Session::set('shop_id', $shop_id);
+
         return view('shops::show', compact('shops', 'items', 'categories'));
     }
 

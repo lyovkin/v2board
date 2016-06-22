@@ -130,22 +130,22 @@
                         <span class="error" ng-show="form.albums.$error.required">Выберете альбом</span>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="sel4">Выберете магазин для загрузки:</label>
-                        <select class="form-control" id="sel4" name="shop_id"
-                                ng-model="selectedShop" required>
-                            <option value="" selected>Выберете магазин для загрузки</option>
-                            <option ng-repeat="shop in shops" value="[[ shop.id ]]">[[ shop.profile.name ]]</option>
-                        </select>
-                        <span class="error" ng-show="form.shop_id.$error.required">Выберете магазин</span>
-                    </div>
-                </div>
+                {{--<div class="col-md-12">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label for="sel4">Выберете магазин для загрузки:</label>--}}
+                        {{--<select class="form-control" id="sel4" name="shop_id"--}}
+                                {{--ng-model="selectedShop" required>--}}
+                            {{--<option value="" selected>Выберете магазин для загрузки</option>--}}
+                            {{--<option ng-repeat="shop in shops" value="[[ shop.id ]]">[[ shop.profile.name ]]</option>--}}
+                        {{--</select>--}}
+                        {{--<span class="error" ng-show="form.shop_id.$error.required">Выберете магазин</span>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="sel5">Выберете категорию товара:</label>
                         <select class="form-control" id="sel5" name="shop_id"
-                                ng-model="selectedCategory" ng-disabled="selectedShop == ''" required>
+                                ng-model="selectedCategory" required>
                             <option value="" selected>Выберете категорию товара</option>
                             <option ng-repeat="categories in shops_categories" value="[[ categories.id ]]">[[ categories.name ]]</option>
                         </select>
@@ -153,10 +153,10 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-default" style="margin-left: 15px;"
-                        ng-show="selectedAlbum != '' && selectedShop != ''"
+                        ng-show="selectedAlbum != ''"
                     ng-click="upload_photos(); successAlert(); ">Загрузить</button>
                 <button type="button" class="btn btn-default" style="margin-left: 15px;"
-                        ng-show="selectedGroupAlbum != '' && selectedShop != ''"
+                        ng-show="selectedGroupAlbum != ''"
                         ng-click="upload_photos_group(); successAlert(); ">Загрузить</button>
                 <div class="row" style="margin-left: 0; margin-top: 25px;">
                         <div class="col-md-4" ng-repeat="photo in photos_albums">
