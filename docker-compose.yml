@@ -1,0 +1,42 @@
+version: '3.0'
+
+services:
+  php:
+    container_name: board_php
+    build: docker/php
+    restart: always
+    volumes:
+      - .:/var/www/v2board
+    links:
+      - db
+
+  nginx:
+    container_name: board_nginx
+    build: docker/nginx
+    restart: always
+    links:
+      - php
+    volumes:
+      - .:/var/www/v2board
+      - ./.logs/nginx/:/var/log/nginx
+    tty: true
+
+  db:
+    image: mysql:5.6
+    container_name: board_db
+    restart: always
+    volumes:
+      - ./.logs/mysql:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: boardv2
+      MYSQL_USER: root
+
+  phpmyadmin:
+    container_name: board_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    links:
+      - db:db

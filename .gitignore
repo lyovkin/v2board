@@ -1,12 +1,9 @@
-/vendor
-
+vendor
+docker-compose.override.yml
 .idea
 node_modules
 composer.lock
 /public/uploads
-/nbproject/private/
-/test/reports
-tests/_output/*
 auth.json
-
 .env
+docker/nginx/nginx.conf

@@ -16,21 +16,15 @@
 		"league/glide": "0.3.*@dev",
 		"mockery/mockery": "0.9.*@dev",
 	    "laravelcollective/html": "~5.0",
-		"spatie/laravel-backup": "dev-master",
+		"spatie/laravel-backup": "2.*",
         "cboden/ratchet"             : "0.3.*",
         "brainboxlabs/brain-socket"  : "dev-master",
         "laravelcollective/annotations": "5.0.*@dev",
         "guzzle/guzzle": "3.9.*@dev",
 		"jenssegers/agent": "^3.0@dev",
 		"fzaninotto/faker": "^1.5@dev",
-		"codeception/codeception": "*",
 		"za-laravel/laravel-navigation": "dev-master"
     },
-	"require-dev": {
-		"phpunit/phpunit": "~4.7.7",
-        "codeception/specify": "dev-master",
-        "codeception/verify": "dev-master"
-	},
 	"autoload": {
 		"classmap": [
 			"database",
