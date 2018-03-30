@@ -80,7 +80,7 @@ return [
 	|
 	*/
 
-	'username' => "postmaster@sandbox433a0b8ed2ea4c1ba0177a2065303385.mailgun.org",
+	'username' => "postmaster@sandboxb3789e1d3fb9448bba812dfee3887d87.mailgun.org",
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
 	|
 	*/
 
-	'password' => "c6a97a7c4cb333839fa3fd72d14c5d42",
+	'password' => "45628df931fb155585e3199636f6b245",
 
 	/*
 	|--------------------------------------------------------------------------
