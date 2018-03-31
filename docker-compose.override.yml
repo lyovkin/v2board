@@ -1,0 +1,18 @@
+version: '3.0'
+
+services:
+  nginx:
+    ports:
+      - 80:80
+
+  php:
+    ports:
+      - 9001:9000
+
+  db:
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    ports:
+      - 3030:80

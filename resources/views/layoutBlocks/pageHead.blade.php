@@ -1,7 +1,7 @@
 <div class="site-showcase">
     <!-- Start Page Header -->
     <div class="parallax page-header"
-         style="background-image:url(/img/title.jpg); height: 95px;">
+         style="background-image:url(/img/title.jpg); height: 260px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

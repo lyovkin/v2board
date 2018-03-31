@@ -30,15 +30,13 @@ class HomeController extends AbstractController
 
         $ads = $advertisement->approved()->orderBy('top', 'desc')->orderBy('id', 'desc');
 
-        if($_SERVER['HTTP_HOST'] == env('HOST'))
-        {
+        if($_SERVER['HTTP_HOST'] == env('HOST')) {
             $ads = $ads->paginate(10);
-        }else
-        {
+        } else {
             $ads = $ads->paginate(20);
         }
-        return view('welcome', compact('ads'));
 
+        return view('welcome', compact('ads'));
     }
 
 }

@@ -1,7 +1,10 @@
 {
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "laravel-elixir": "*",
-    "gulp-concat": "~2.6.0"
+    "gulp": "^3.9.1",
+    "gulp-concat": "~2.6.0",
+    "laravel-elixir": "*"
+  },
+  "dependencies": {
+    "gulp-install": "^1.1.0"
   }
 }

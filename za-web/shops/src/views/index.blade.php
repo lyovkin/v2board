@@ -77,16 +77,23 @@
 
 
                                 @if($shop->paid_at <= date('Y-m-d H:i:s'))
-
+                                    <h3><p class="h5" style="color: red">Магазин просрочен на
+                                {{ \Carbon\Carbon::parse($shop->paid_at)->diffInDays(\Carbon\Carbon::now()) }} дней.</p></h3>
                                     {!! Form::open(['url'=>["shops/$shop->id/extend"],'role'=>'form', 'method' => 'POST']) !!}
-                                        <button type="submit" class="btn btn-success btn-sm"> Продлить на 1 месяц?</button>
+                                    {!! Form::label('months', 'Активировать (продлить)') !!}
+                                        <select name='months' class='form-control' required="required">
+                                            @for($i=1; $i<=12; $i++)
+                                                <option value='{{ $i }}'>{{ $i . ' мес.' }}</option>
+                                            @endfor
+                                        </select>
+                                        <button type="submit" class="btn btn-success btn-sm"> Продлить?</button>
                                     {!! Form::close() !!}
                                         <br />
                                     <span style="color: green;">Стоимость продления составляет
                                         @if($shop->capacity == 500)
-                                            500 <i class="fa fa-ruble"></i>
+                                            500 <i class="fa fa-ruble"> * кол-во месяцев </i>
                                         @elseif($shop->capacity == 2000)
-                                            1000 <i class="fa fa-ruble"></i>
+                                            1000 <i class="fa fa-ruble"> * кол-во месяцев </i>
                                         @endif
                                         и зависит от кол-ва товаров в магазине
                                     </span>
