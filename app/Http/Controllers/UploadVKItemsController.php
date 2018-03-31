@@ -72,11 +72,11 @@ class UploadVKItemsController extends Controller {
                     return redirect()->route('shops.my');
                 }
             foreach ($photos as $photo) {
-                foreach ($photo as $item) {
+                foreach ($photo['items'] as $item) {
                     $attachment = new Attachment();
-                    $attachment->name = $item['aid'];
-                    $attachment->path = $item['src_big'];
-                    $attachment->url = $item['src_big'];
+                    $attachment->name = $item['album_id'];
+                    $attachment->path = $item['photo_604'];
+                    $attachment->url = $item['photo_604'];
                     $attachment->save();
 
                     $shop_item = new ShopItems();

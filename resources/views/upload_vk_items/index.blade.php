@@ -104,7 +104,7 @@
                         <select class="form-control" id="sel1" name="groups"
                                 ng-model="selectedGroup" ng-disabled="selectedAlbum.length != ''" required>
                             <option value="" selected>Выберете группу</option>
-                            <option ng-repeat="groups in user_groups" value="[[ groups.gid ]]">[[ groups.name ]]</option>
+                            <option ng-repeat="groups in user_groups" value="[[ groups.id ]]">[[ groups.name ]]</option>
                         </select>
                         <span class="error" ng-show="form.groups.$error.required">Группа не выбрана</span>
                     </div>
@@ -115,7 +115,7 @@
                         <select class="form-control" id="sel2" name="group_albums"
                                 ng-model="selectedGroupAlbum" ng-disabled="selectedGroup.length == ''" required>
                             <option value="" selected>Выберете альбом</option>
-                            <option ng-repeat="group_album in group_albums" value="[[ group_album ]]">[[ group_album.title ]]</option>
+                            <option ng-repeat="group_album in group_albums.items" value="[[ group_album ]]">[[ group_album.title ]]</option>
                         </select>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                         <select class="form-control" id="sel3" name="albums"
                                 ng-model="selectedAlbum" ng-disabled="selectedGroup != ''" required>
                             <option value="" selected>Выберете альбом для выгрузки</option>
-                            <option ng-repeat="album in albums" value="[[album.aid]]">[[ album.title ]]</option>
+                            <option ng-repeat="album in albums" value="[[album.id]]">[[ album.title ]]</option>
                         </select>
                         <span class="error" ng-show="form.albums.$error.required">Выберете альбом</span>
                     </div>
@@ -159,8 +159,8 @@
                         ng-show="selectedGroupAlbum != ''"
                         ng-click="upload_photos_group(); successAlert(); ">Загрузить</button>
                 <div class="row" style="margin-left: 0; margin-top: 25px;">
-                        <div class="col-md-4" ng-repeat="photo in photos_albums">
-                            <img ng-src="[[photo.src_big]]" ng-hide="photo.error_code == 100" class="thumbnail" style="width:200px;height:200px">
+                        <div class="col-md-4" ng-repeat="photo in photos_albums.items">
+                            <img ng-src="[[photo.photo_604]]" ng-hide="photo.error_code == 100" class="thumbnail" style="width:200px;height:200px">
                         </div>
                 </div>
             </form>

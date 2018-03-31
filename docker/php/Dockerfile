@@ -52,6 +52,17 @@ RUN echo "opcache.max_accelerated_files = 20000" >> /usr/local/etc/php/conf.d/do
 
 RUN echo 'alias art="php artisan"' >> ~/.bashrc
 
+# Installation node.js
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+	apt-get update && apt-get install -y nodejs && \
+	npm install npm@latest -g
+
+	# Installation of Gulp
+RUN npm install -g gulp
+
+    # Installation of Bower
+RUN npm install -g bower
+
 COPY php.ini /usr/local/etc/php/
 
 WORKDIR /var/www/v2board
