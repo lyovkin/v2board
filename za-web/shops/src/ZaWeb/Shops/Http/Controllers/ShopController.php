@@ -278,37 +278,38 @@ class ShopController extends Controller
     /**
      * @POST("/shops/{shops}/extend", middleware="auth", as="shops.extend")
      */
-    public function extend(Shops $shop)
+    public function extend(Request $request, Shops $shop)
     {
+        $months = (int) $request->get('months');
         // 500 items
         if ($shop->capacity == 500) {
             // Create transaction
             $payment = new Payment();
             $payment->uid = mt_rand();
             $payment->user_id = Auth::user()->id;
-            $payment->description = 'Продление магазина на 500 товаров';
-            $payment->balance = 500;
+            $payment->description = "Продление магазина на 500 товаров на $months мес.";
+            $payment->balance = 500 * $months;
             $payment->operation = '-';
             $payment->save();
 
             // Check balance
-            if (Auth::user()->balance < 500) {
+            if (Auth::user()->balance < 500 * $months) {
                 \Session::flash('message', 'Недостаточно средств для продления магазина, пожалуйста пополните баланс.');
                 return redirect()->route('shops.my');
             } // if OK
             else {
                 // Update shop
-                $shop->paid_at = Carbon::now()->addMonth();
+                $shop->paid_at = Carbon::now()->addMonths($months);
                 $shop->update();
 
                 // Update transaction and balance user
                 $payment->status = 1;
                 $payment->save();
                 $modifyBalanceToUser = User::find(\Auth::user()->id);
-                $modifyBalanceToUser->balance -= 500;
+                $modifyBalanceToUser->balance -= 500 * $months;
                 $modifyBalanceToUser->update();
 
-                \Session::flash('message', "Вы продлили магазин на 500 товаров. Спасибо за покупку ;)");
+                \Session::flash('message', "Вы продлили магазин на 500 товаров на $months мес. Спасибо за покупку ;)");
             }
             return redirect()->route('shops.my');
         }
@@ -318,29 +319,29 @@ class ShopController extends Controller
             $payment = new Payment();
             $payment->uid = mt_rand();
             $payment->user_id = Auth::user()->id;
-            $payment->description = 'Продление магазина на 2000 товаров';
-            $payment->balance = 1000;
+            $payment->description = "Продление магазина на 2000 товаров на $months мес.";
+            $payment->balance = 1000 * $months;
             $payment->operation = '-';
             $payment->save();
 
             // Check balance
-            if (Auth::user()->balance < 1000) {
+            if (Auth::user()->balance < 1000 * $months) {
                 \Session::flash('message', 'Недостаточно средств для продления магазина, пожалуйста пополните баланс.');
                 return redirect()->route('shops.my');;
             } // if OK
             else {
                 // Create shop
-                $shop->paid_at = Carbon::now()->addMonth();
+                $shop->paid_at = Carbon::now()->addMonths($months);
                 $shop->update();
 
                 // Update transaction and balance user
                 $payment->status = 1;
                 $payment->save();
                 $modifyBalanceToUser = User::find(\Auth::user()->id);
-                $modifyBalanceToUser->balance -= 1000;
+                $modifyBalanceToUser->balance -= 1000 * $months;
                 $modifyBalanceToUser->update();
 
-                \Session::flash('message', "Вы продлили магазин на 2000 товаров. Спасибо за покупку ;)");
+                \Session::flash('message', "Вы продлили магазин на 2000 товаров на $months мес. Спасибо за покупку ;)");
             }
 
             return redirect()->route('shops.my');
