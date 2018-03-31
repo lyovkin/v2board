@@ -16,6 +16,18 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('category', 'Категория магазина') !!}
+    <select name='category' class='form-control' required="required">
+        <option selected disabled>Выберете категорию</option>
+
+        @foreach(\App\Models\ShopCategories::all() as $cat)
+            <option value='{{ $cat['id'] }}'>{{ $cat['name'] }}</option>
+        @endforeach
+    </select>
+    <a href="#" onclick="$('select[name=category]').val('Выберете категорию');return false;">Убрать</a>
+</div>
+
+<div class="form-group">
     {!! Form::label('city', 'Город') !!}
     <select name='city' class='form-control'>
         <option selected disabled>Выберете город</option>
@@ -30,7 +42,7 @@
 <div class="form-group">
     {!! Form::label('capacity', 'Количество товаров') !!}
 
-    {!! Form::text('capacity', old('capacity'), ['class'=>'form-control', 'placeholder'=>'Количество товаров']) !!}
+    {!! Form::select('capacity', [500 => 500, 2000 => 2000], old('capacity'), ['class'=>'form-control', 'placeholder'=>'Количество товаров']) !!}
 </div>
 
 <div class="form-group">
