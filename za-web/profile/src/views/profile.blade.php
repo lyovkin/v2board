@@ -61,7 +61,7 @@
             </li>
             <li class="list-group-item">
                 <span style="float: right"><button class="btn btn-sm btn-default" style="padding: 3px 10px">
-                        <a href="http://chat.hlv24.ru/" style="text-decoration: none" class="blacked-text"> Начать чат</a></button></span>
+                        <a href="http://hlv24.ru:8282" style="text-decoration: none" class="blacked-text"> Начать чат</a></button></span>
                 Чат
             </li>
               <li class="list-group-item">

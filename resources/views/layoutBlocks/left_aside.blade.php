@@ -30,7 +30,7 @@
                 </li>
 
 
-                <li class="aside-li"><a href="http://chat.hlv24.ru/">Чат - Знакомства</a></li>
+                <li class="aside-li"><a href="http://hlv24.ru:8282">Чат - Знакомства</a></li>
 
 
             @else
