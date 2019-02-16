@@ -39,6 +39,7 @@ class AdvertisementTable extends Migration
             $table->integer('price')->nullable();
             $table->integer('approved')->default('0');
             $table->integer('rating')->unsigned();
+            $table->integer('top')->nullable();
 
             $table->timestamps();
         });

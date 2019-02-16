@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libicu-dev \
     libgeoip-dev \
+    gnupg2 \
     libmagickwand-dev && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

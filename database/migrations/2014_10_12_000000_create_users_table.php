@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
             $table->smallInteger('blocked')->unsigned();
             $table->rememberToken();
             $table->integer('balance')->unsigned()->default('0');
+            $table->dateTime('last_login');
             $table->timestamps();
 		});
 	}

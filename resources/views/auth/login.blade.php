@@ -24,7 +24,8 @@
                         "placeholder"=>"Почта",
                         "name"=>"email",
                         "autocapitalize"=>"on",
-                        "type"=>"email"]) !!}
+                        "type"=>"email",
+                        "id"=>"loginEmail"]) !!}
                     </div>
                 </div>
                 <div class="form-group">
