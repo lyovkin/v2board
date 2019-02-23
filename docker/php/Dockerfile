@@ -13,6 +13,10 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libgeoip-dev \
     gnupg2 \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libxpm-dev \
+    libvpx-dev \
     libmagickwand-dev && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -44,6 +48,12 @@ RUN pecl install imagick-3.4.1 && docker-php-ext-enable imagick
 RUN pecl install APCu-4.0.10
 
 RUN docker-php-ext-configure intl
+
+RUN docker-php-ext-configure gd \
+    --with-freetype-dir=/usr/lib/x86_64-linux-gnu/ \
+    --with-jpeg-dir=/usr/lib/x86_64-linux-gnu/ \
+    --with-xpm-dir=/usr/lib/x86_64-linux-gnu/ \
+    --with-vpx-dir=/usr/lib/x86_64-linux-gnu/
 
 RUN docker-php-ext-install mcrypt pdo pdo_mysql gd xml soap intl opcache exif
 
