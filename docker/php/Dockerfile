@@ -45,7 +45,7 @@ RUN pecl install APCu-4.0.10
 
 RUN docker-php-ext-configure intl
 
-RUN docker-php-ext-install mcrypt pdo pdo_mysql gd xml soap intl opcache
+RUN docker-php-ext-install mcrypt pdo pdo_mysql gd xml soap intl opcache exif
 
 RUN docker-php-ext-enable xml opcache apcu
 
