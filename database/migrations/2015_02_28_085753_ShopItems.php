@@ -28,6 +28,9 @@ class ShopItems extends Migration {
 			$table->integer('shop_id')->unsigned()->index();
 			$table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
 
+            $table->unsignedInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('items_category');
+
 			$table->timestamps();
 
 		});
