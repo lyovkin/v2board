@@ -21,7 +21,7 @@ app.controller('vkUploadCtrl', function($scope, $http, $location, Flash, $timeou
     };
 
     var url_vk = 'https://api.vk.com';
-    var version = 5.73;
+    var version = 5.95;
     // var url = $location.absUrl(), access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
     // var u_id = $location.absUrl(), user_id = u_id.match(/user_id=([^&]+)/)[1];
 

@@ -23,6 +23,9 @@ class Shops extends Migration {
             $table->integer('city_id')->unsigned()->index();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
+            $table->integer('category_id')->unsigned()->index()->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
 			$table->integer('shop_category_id')->unsigned()->index()->nullable();
 			$table->foreign('shop_category_id')->references('id')->on('shop_category')->onDelete('cascade');
 

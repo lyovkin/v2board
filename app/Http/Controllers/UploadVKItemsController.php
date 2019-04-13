@@ -75,8 +75,8 @@ class UploadVKItemsController extends Controller {
                 foreach ($photo['items'] as $item) {
                     $attachment = new Attachment();
                     $attachment->name = $item['album_id'];
-                    $attachment->path = $item['photo_604'];
-                    $attachment->url = $item['photo_604'];
+                    $attachment->path = $item['sizes'][2]['url'];
+                    $attachment->url = $item['sizes'][2]['url'];
                     $attachment->save();
 
                     $shop_item = new ShopItems();

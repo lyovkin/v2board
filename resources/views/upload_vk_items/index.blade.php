@@ -160,7 +160,7 @@
                         ng-click="upload_photos_group(); successAlert(); ">Загрузить</button>
                 <div class="row" style="margin-left: 0; margin-top: 25px;">
                         <div class="col-md-4" ng-repeat="photo in photos_albums.items">
-                            <img ng-src="[[photo.photo_604]]" ng-hide="photo.error_code == 100" class="thumbnail" style="width:200px;height:200px">
+                            <img ng-src="[[photo.sizes[2].url]]" ng-hide="photo.error_code == 100" class="thumbnail" style="width:200px;height:200px">
                         </div>
                 </div>
             </form>

@@ -17,5 +17,5 @@ return [
 
     'scope' => 'photos,groups',
 
-    'v' => 5.73,
+    'v' => 5.95,
 ];
