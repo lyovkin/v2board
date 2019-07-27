@@ -26,7 +26,7 @@ class ShopCategoriesController extends Controller {
 	 */
 	public function filter(Request $request)
 	{
-		$shops = Shops::where('category_id', $request->input('id'))
+		$shops = Shops::where('shop_category_id', $request->input('id'))
 			->where('blocked', 0)
 			->where('paid_at', '>=', new \DateTime('today'))
 			->orderBy('id', 'desc')
