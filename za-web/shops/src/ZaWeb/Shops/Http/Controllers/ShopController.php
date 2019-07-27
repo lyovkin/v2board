@@ -108,7 +108,7 @@ class ShopController extends Controller
                 $shop = new Shops();
                 $shop->capacity = $request->get('capacity');
                 $shop->city_id = $request->get('city');
-                $shop->category_id = $request->input('category');
+                $shop->shop_category_id = $request->input('category');
                 $shop->paid_at = Carbon::now()->addMonth();
                 $shopProfile = new ShopProfile();
                 $shopProfile->fill($request->except('attachment'));
@@ -157,7 +157,7 @@ class ShopController extends Controller
                 $shop = new Shops();
                 $shop->capacity = $request->get('capacity');
                 $shop->city_id = $request->get('city');
-                $shop->category_id = $request->input('category');
+                $shop->shop_category_id = $request->input('category');
                 $shop->paid_at = Carbon::now()->addMonth();
                 $shopProfile = new ShopProfile();
                 $shopProfile->fill($request->except('attachment'));
