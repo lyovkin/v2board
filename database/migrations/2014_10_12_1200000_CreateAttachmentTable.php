@@ -19,6 +19,7 @@ class CreateAttachmentTable extends Migration {
 			$table->string('name');
 			$table->string('path');
 			$table->string('url');
+            $table->string('hash')->nullable();
 			$table->timestamps();
 
 		});

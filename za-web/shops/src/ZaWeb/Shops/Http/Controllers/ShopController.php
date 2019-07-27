@@ -346,6 +346,8 @@ class ShopController extends Controller
 
             return redirect()->route('shops.my');
         }
+
+        return redirect()->route('shops.my');
     }
 
     /**
