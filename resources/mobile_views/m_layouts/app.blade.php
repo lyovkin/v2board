@@ -119,7 +119,7 @@
 
     <div class="main" role="main">
 
-        <div id="content" class="content full">
+        <div id="content" class="content full" style="padding: 0px;">
             <div class="well">
                 {!! Form::open(['route'=>['welcome'] ,'method' => 'GET']) !!}
                 {!! Form::text('search', '', ['class' => 'form-control input-sm', 'maxlength'=>'64','placeholder'=>'Поиск по объявлениям'] ) !!}

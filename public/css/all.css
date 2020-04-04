@@ -9573,7 +9573,7 @@ p.row-content {
 }
 
 .title-color {
-	background: #f55a4e;
+	background: #4288f5;
 	color:#fff;
 	text-align: center;
 	border-radius: 1px;
@@ -9784,10 +9784,10 @@ p.row-content {
     margin:5px;
 }
 .text-primary, .btn-primary .badge, .btn-link,a.list-group-item.active > .badge,.nav-pills > .active > a > .badge, p.drop-caps:first-child:first-letter, .accent-color, .post-more, ul.nav-list-primary > li a:hover, .widget_recent_comments a, .navigation > ul > li:hover > a, .flex-caption .hero-agent-contact, .property-info h4 a, .agent-info h4 a, .features-list li .icon, .property-listing h3 a, .agents-listing h3 a, .nav-tabs li.active > i, .nav-tabs li:hover > i, .location > i, .contact-info-blocks > div > i, .additional-amenities > span.available i, .error-404 h2 > i, .properties-table .action-button i, .pricing-column h3 {
-	color:#f55a4e;
+	color: #4288f5;
 }
 a:hover, .testimonials > li cite a:hover, .property-listing h3 a:hover, .agents-listing h3 a:hover, .property-info h4 a:hover, .agent-info h4 a:hover{
-	color:#f55a4e;
+	color: #4288f5;
 }
 .featured-gallery p, .post-more:hover, .widget_recent_comments a:hover, .property-info h4 a:hover{
 	opacity:.9
@@ -9826,14 +9826,14 @@ a.list-group-item.active,
 a.list-group-item.active:hover,
 a.list-group-item.active:focus,
 .panel-primary > .panel-heading, .carousel-indicators .active, .owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span, hr.sm, .flex-control-nav a:hover, .flex-control-nav a.flex-active, .accordion-heading .accordion-toggle.active, .accordion-heading:hover .accordion-toggle, .accordion-heading:hover .accordion-toggle.inactive, .nav-tabs li a:hover, .nav-tabs li a:active, .nav-tabs li.active a, .fc-event, .site-header .social-icons a, .navigation > ul > li > ul > li:hover > a, .navigation > ul > li > ul > li > ul > li:hover a, .top-header, .block-heading h4, .single-property .price, .timeline > li > .timeline-badge, .pricing-column.highlight h3, .site-footer-bottom .social-icons a:hover{
-  background-color: #f55a4e;
+  background-color: #4288f5;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary, .next-prev-nav a:hover, .staff-item .social-icons a:hover, .site-header .social-icons a:hover{
-  background: #f55a4e;
+  background: #4288f5;
 }
 .nav .open > a,
 .nav .open > a:hover,
@@ -9852,19 +9852,20 @@ a.list-group-item.active:hover,
 a.list-group-item.active:focus,
 .panel-primary,
 .panel-primary > .panel-heading, .fc-event{
-	border-color:#f55a4e;
+	border-color: #4288f5;
 }
 .panel-primary > .panel-heading + .panel-collapse .panel-body, .navigation ul > li:hover > a, .navigation ul > li.current_menu_item > a{
-	border-top-color:#f55a4e;
+	border-top-color: #4288f5;
 }
 .panel-primary > .panel-footer + .panel-collapse .panel-body, .widget .widgettitle{
-	border-bottom-color:#f55a4e;
+	border-bottom-color: #4288f5;
 }
 blockquote{
-	border-left-color:#f55a4e;
+	border-left-color: #4288f5;
 }
 
 /* Color Scheme Specific Classes */
+
 div.pp_default .pp_top,div.pp_default .pp_top .pp_middle,div.pp_default .pp_top .pp_left,div.pp_default .pp_top .pp_right,div.pp_default .pp_bottom,div.pp_default .pp_bottom .pp_left,div.pp_default .pp_bottom .pp_middle,div.pp_default .pp_bottom .pp_right{height:13px}
 div.pp_default .pp_top .pp_left{background:url(../images/prettyPhoto/default/sprite.png) -78px -93px no-repeat}
 div.pp_default .pp_top .pp_middle{background:url(../images/prettyPhoto/default/sprite_x.png) top left repeat-x}

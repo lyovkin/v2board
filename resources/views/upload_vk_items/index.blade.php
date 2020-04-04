@@ -83,7 +83,7 @@
         <div class="" ng-controller="vkUploadCtrl">
             <div class="row">
                 <flash-message duration="5000" show-close="true"></flash-message>
-                    <div class="col-md-12" style="border-radius: 10px;border: solid #f55a4e;">
+                    <div class="col-md-12" style="border-radius: 10px;border: solid #4288f5;">
                         <div class="testimonials">
                             <div class="active item">
                                 <div class="carousel-info">
