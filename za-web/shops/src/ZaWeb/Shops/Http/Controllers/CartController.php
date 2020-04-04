@@ -39,17 +39,20 @@ class CartController extends Controller
         foreach($cart as $item)
         {
             $itemInShop = ShopItems::find($item['_id']);
-            $totalSum+=$itemInShop->price*$item['_quantity'];
+
+            $totalSum += $itemInShop->price * $item['_quantity'];
 
             $items[$item['_data']['partner']][] = [
                 'id' => $itemInShop->id,
                 'name' => $itemInShop->name,
                 'price' => $itemInShop->price,
-                'quantity' => $item['_quantity']
+                'art_number' => $itemInShop->art_number,
+                'pic' => $itemInShop->attachment->url,
+                'quantity' => $item['_quantity'],
             ];
         }
 
-        foreach($items as $id=>$positions)
+        foreach($items as $id => $positions)
         {
             $data = [
                 'items' => $positions,
@@ -57,6 +60,7 @@ class CartController extends Controller
                 'totalSum' => $totalSum
             ];
             $shop = Shops::find($id);
+
             \Mail::send('shops::emails.order', $data, function($message) use($shop)
             {
                 $message->from('board@mail.com', 'Новый заказ');

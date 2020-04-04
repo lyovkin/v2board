@@ -4,10 +4,10 @@
 <ul>
 @foreach($items as $item)
     <li><strong>Название: </strong>{{ $item['name'] }} <strong>x {{ $item['quantity'] }} ( {{ $item['price'] * $item['quantity'] }} рублей )</strong></li>
-    <li><strong>Артикул №: </strong>{{ $item['art'] }}</li>
-    <li><strong>Описание: </strong>{{ $item['description'] }}</li>
+    <li><strong>Артикул №: </strong>{{ isset($item['art_number']) ? $item['art_number'] : ''}}</li>
+    <li><strong>Описание: </strong>{{ isset($item['description']) ? $item['description'] : '' }}</li>
     <br>
-    <img src="{{ $item['pic'] }}" width="100" height="100">
+    <img src="{{ isset($item['pic']) ? $item['pic'] :'' }}" width="100" height="100">
 @endforeach
 </ul>
 
