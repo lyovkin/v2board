@@ -36,6 +36,7 @@ class CartController extends Controller
         $cart = $request->cart;
 
         $totalSum = 0;
+        $items = [];
         foreach($cart as $item)
         {
             $itemInShop = ShopItems::find($item['_id']);

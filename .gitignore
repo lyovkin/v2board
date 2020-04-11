@@ -2,7 +2,6 @@ vendor
 docker-compose.override.yml
 .idea
 node_modules
-composer.lock
 /public/uploads
 auth.json
 .env

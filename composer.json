@@ -18,12 +18,12 @@
 	    "laravelcollective/html": "~5.0",
 		"spatie/laravel-backup": "2.*",
         "cboden/ratchet"             : "0.3.*",
-        "brainboxlabs/brain-socket"  : "dev-master",
+        "brainboxlabs/brain-socket"  : "^1.0",
         "laravelcollective/annotations": "5.0.*@dev",
-        "guzzle/guzzle": "3.9.*@dev",
 		"jenssegers/agent": "^3.0@dev",
 		"fzaninotto/faker": "^1.5@dev",
-		"za-laravel/laravel-navigation": "dev-master"
+		"za-laravel/laravel-navigation": "dev-master",
+		"guzzlehttp/guzzle": "~5.0"
     },
 	"autoload": {
 		"classmap": [
