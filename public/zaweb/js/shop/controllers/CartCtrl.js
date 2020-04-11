@@ -1,7 +1,5 @@
 angular.module('shop').controller('CartCtrl',  function($scope, $http, ngCart) {
 
-
-
     /**
      *
      * @returns {*}

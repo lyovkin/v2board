@@ -18,6 +18,7 @@
                     <li class="grid-item type-rent item-[[ item.getId() ]]" ng-repeat="item in cart.getItems()">
                         <div class="property-block"> <a href="#" class=""> <img ng-src="[[ item.getData().data.image ]]?w=600&h=400&fit=crop" alt=""> </a>
                             <div class="property-info">
+                                {{--<pre ng-cloak>[[ item | json ]]</pre>--}}
                                 <h4 ng-cloak>[[ item.getName() ]]</h4>
                                 <p ng-cloak>Описание: [[item.getData().data.description]]...</p>
                                 <div class="price" ng-cloak><strong><i class="fa fa-rub"></i></strong><span> [[ item.getPrice() * item.getQuantity() ]]</span></div>

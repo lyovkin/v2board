@@ -172,27 +172,39 @@
                 <ul class="grid-holder col-3" >
                     @foreach($items as $item)
                     <li class="grid-item type-rent">
-                        <div class="property-block">
-                            @if ($item->attachment)
-                                <a href="{{$item->attachment->url}}" rel="prettyPhoto[{{$item->id}}]">
-                                    {!! HTML::image($item->attachment->url.'?w=300&h=300&fit=crop', '',
-                                    ['class' => 'img-thumbnail img-responsive']) !!}
-                                </a>
-                                {{--<img src="{{ $item->attachment->url }}?w=200&h=200" class="img-thumbnail" alt="">--}}
-                            @else
-                                <br />
-                                <h4 style="text-align: center">Изображение отсутствует</h4>
-                            @endif
-
-                            <div class="property-info" style="word-wrap: break-word;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
                                 <h4 style="color: red">{{ $item->name }}
                                     @if($item->art_number)
                                         <span style="float: right; font-size: small">Артикул № <strong>{{ $item->art_number }}</strong></span>
                                     @endif
                                 </h4>
-                                <hr>
-                                <p class="h4 blacked-text">Описание: </p>
-                                <p class="description blacked-text" style="">{{ $item->description }}</p>
+                            </div>
+                            <div class="panel-body">
+                                @if ($item->attachment)
+                                    <a href="{{ $item->attachment->url }}" rel="prettyPhoto[{{ $item->id }}]">
+                                       <div style="text-align: center;">
+                                           {!! HTML::image($item->attachment->url, '',
+                                        ['style' => 'height: 200px; width: 300px;']) !!}
+                                       </div>
+                                    </a>
+                                @else
+                                    <br />
+                                    <h4 style="text-align: center">Изображение отсутствует</h4>
+                                @endif
+                            </div>
+                            <div class="panel-footer">
+                                <button type="button" class="btn btn-default" data-toggle="collapse"
+                                        data-target="#item-{{ $item->id }}">Описание
+                                        <i class="fa fa-comment" aria-hidden="true"></i>
+                                </button>
+
+                                <div id="item-{{ $item->id }}" class="collapse">
+                                    <p class="description blacked-text" style="">
+                                        <br/>
+                                        {{ !empty($item->description) ? $item->description : 'Нет описания' }}
+                                    </p>
+                                </div>
                                 <hr>
                                 <div class="price"><span>{{ $item->price }} <i class="fa fa-rub"></i></span></div>
                                 <div class="shop__cart-button" style="float:right">
@@ -200,8 +212,14 @@
                                     <span class="shop__in-cart" data-in-cart="{{ $item->id }}">
 
                                     </span>
+                                    @if(auth()->user()->id === $item->shop->user_id)
+                                        <a class="btn btn-warning"
+                                                href="{{ route('shopitems.edit', ['id' => $item->id]) }}" style="height:30px;">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    @endif
                                     <button class="btn btn-success shop__add-cart"  href="#"
-                                            data-img="{{ $item->attachment->url }}"
+                                            data-item-image="{{ $item->attachment->url }}"
                                             data-description="{{ mb_substr($item->description, 0, 100) }}"
                                             data-add-cart="{{ $item->id }}"
                                             data-item-name="{{ $item->name }}"

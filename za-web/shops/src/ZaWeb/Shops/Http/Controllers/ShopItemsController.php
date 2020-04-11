@@ -5,6 +5,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Attachment;
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
+use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
+use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Illuminate\Http\Request;
 use ZaWeb\Shops\Models\Shops;
 use ZaWeb\Shops\Models\ShopItems;

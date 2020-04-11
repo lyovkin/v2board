@@ -9625,7 +9625,7 @@ p.row-content {
 }
 
 #drop{
-    background-color: #f55a4e;
+    background-color: #dddddd;
     padding: 40px 50px;
     margin-bottom: 30px;
     border: 5px dashed #666666;
@@ -9783,6 +9783,7 @@ p.row-content {
     height:150px;
     margin:5px;
 }
+
 .text-primary, .btn-primary .badge, .btn-link,a.list-group-item.active > .badge,.nav-pills > .active > a > .badge, p.drop-caps:first-child:first-letter, .accent-color, .post-more, ul.nav-list-primary > li a:hover, .widget_recent_comments a, .navigation > ul > li:hover > a, .flex-caption .hero-agent-contact, .property-info h4 a, .agent-info h4 a, .features-list li .icon, .property-listing h3 a, .agents-listing h3 a, .nav-tabs li.active > i, .nav-tabs li:hover > i, .location > i, .contact-info-blocks > div > i, .additional-amenities > span.available i, .error-404 h2 > i, .properties-table .action-button i, .pricing-column h3 {
 	color: #4288f5;
 }

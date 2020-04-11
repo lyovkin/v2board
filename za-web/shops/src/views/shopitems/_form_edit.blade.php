@@ -32,6 +32,14 @@
 <div class="form-group">
     {!! Form::label('attachment', 'Картинка') !!}
     {!! Form::file('attachment', old('attachment')) !!}
+
+    @if($items->attachment)
+        <a href="{{ $items->attachment->url }}" rel="prettyPhoto[{{ $items->id }}]">
+            <br/>
+                {!! HTML::image($items->attachment->url, '',
+             ['style' => 'height: 200px; width: 300px; border: solid 3px; #666666']) !!}
+        </a>
+    @endif
 </div>
 {!! Form::hidden('shop_id', $shop_id) !!}
 <div class="form-group">
