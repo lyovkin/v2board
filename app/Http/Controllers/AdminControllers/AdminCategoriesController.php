@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminControllers;
 use App\Facades\ImageUploadFacade;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use DB;
 use Illuminate\Contracts\Routing\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Annotations\Annotations\Controller;
@@ -22,7 +23,7 @@ class AdminCategoriesController extends AbstractAdminController
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'desc')->paginate(5);
+        $categories = Category::orderBy('id', 'desc')->get();
         return view('admin.categories.index', ['categories' => $categories]);
     }
 

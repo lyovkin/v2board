@@ -33,8 +33,8 @@
         {{--<pre ng-repeat="item in cart.getItems()">
             [[item|json]]
         </pre>--}}
-        <button class="btn btn-primary" onclick="$('.order').appendTo('body').modal()" ng-show="[[cart.getItems().length > 0]]">Оформить заказ</button>
-        <button type="button" ng-click="sendOrder()" ng-disabled="form.name.$error.required || form.phone.$error.required || form.address.$error.required"
+        <button class="btn btn-primary" id="checkout-btn" onclick="$('.order').appendTo('body').modal()" ng-show="[[cart.getItems().length > 0]]">Оформить заказ</button>
+        <button type="button" id="send-btn" ng-click="sendOrder()" ng-disabled="form.name.$error.required || form.phone.$error.required || form.address.$error.required"
                 class="btn btn-primary" ng-show="[[cart.getItems().length > 0]]">Отправить</button>
 
         <div class="modal fade order" id="order_modal">
@@ -65,7 +65,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                        <button type="button" ng-click="sendOrder($('#order_form').serialize())" ng-disabled="form.name.$error.required || form.phone.$error.required || form.address.$error.required" class="btn btn-primary">Отправить</button>
+                        <button type="button"
+                                ng-click="sendOrder($('#order_form').serialize())"
+                                ng-disabled="form.name.$error.required || form.phone.$error.required || form.address.$error.required"
+                                class="btn btn-primary">Отправить</button>
 
                     </div>
                 </div><!-- /.modal-content -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Request;
+use DB;
 use ZaWeb\Shops\Models\Shops;
 
 class AdminShopsController extends Controller {
@@ -46,6 +47,8 @@ class AdminShopsController extends Controller {
      */
     public function destroy(Shops $shop)
     {
+        DB::table('categories_shops')->where('shop_id', $shop->id)->delete();
+
         $shop->delete();
         return redirect()->route('admin.shops.index');
     }

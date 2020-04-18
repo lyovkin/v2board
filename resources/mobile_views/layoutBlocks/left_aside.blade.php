@@ -27,10 +27,6 @@
                     <a href="{{ route('welcome') }}"> Назад к объявлениям </a>
                 </li>
 
-
-                <li class="aside-li"><a href="http://hlv24.ru:8282">Чат - Знакомства</a></li>
-
-
             @else
                 <li  class="border-bottom" ><a href="{{ url('auth/register') }}">Регистрация</a></li>
                 <li  class="border-bottom" ><a href="{{ url('auth/login') }}">Войти</a></li>

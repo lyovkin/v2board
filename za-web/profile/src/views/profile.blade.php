@@ -59,11 +59,7 @@
                     <span style="float:right" >{{ $data->user->email}}</span>
               Почта 
             </li>
-            <li class="list-group-item">
-                <span style="float: right"><button class="btn btn-sm btn-default" style="padding: 3px 10px">
-                        <a href="http://hlv24.ru:8282" style="text-decoration: none" class="blacked-text"> Начать чат</a></button></span>
-                Чат
-            </li>
+
               <li class="list-group-item">
                           <span style="float:right" >{{$data->user->balance}} <i class="fa fa-rub">
                               </i></span>

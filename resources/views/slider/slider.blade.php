@@ -2,7 +2,7 @@
 <div class="site-showcase">
     <div class="slider-mask overlay-transparent"></div>
     <!-- Start Hero Slider -->
-    <div class="hero-slider flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes"
+    <div class="hero-slider flexslider clearfix" data-autoplay="false" data-pagination="no" data-arrows="yes"
          data-style="fade" data-pause="yes">
         <ul class="slides">
             @include('slider.slide')

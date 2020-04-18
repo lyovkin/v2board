@@ -26,6 +26,22 @@
         .blacked-text {
             color: #000;
         }
+        .item-img {
+            display: inline-block;
+            width: 210px;
+            height: 200px;
+            overflow: hidden;
+            border: 3px solid #FFFFFF;
+            background: #FFFFFF;
+            outline: 1px solid #CCCCCC;
+            margin: 10px 25px;
+        }
+        .item-img img {
+            width: 200px;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 
 @endsection
@@ -183,9 +199,8 @@
                             <div class="panel-body">
                                 @if ($item->attachment)
                                     <a href="{{ $item->attachment->url }}" rel="prettyPhoto[{{ $item->id }}]">
-                                       <div style="text-align: center;">
-                                           {!! HTML::image($item->attachment->url, '',
-                                        ['style' => 'height: 200px; width: 300px;']) !!}
+                                       <div class="item-img">
+                                           {!! HTML::image($item->attachment->url, '') !!}
                                        </div>
                                     </a>
                                 @else

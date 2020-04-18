@@ -63,13 +63,14 @@ angular.module('shop').controller('CartCtrl',  function($scope, $http, ngCart) {
         }).success(function(data, status) {
             alert('Ваш заказ успешно отправлен!');
             ngCart.empty(1);
+            $('#order_modal').modal('hide');
+            $('#checkout-btn').addClass('hide');
+            $('#send-btn').addClass('hide');
         }).error(function(data, status) {
             alert('Error');
         })
     }
-
-
-})
+});
 angular.module('shop').controller('OrderCtrl', function(ngCart) {
 
 })

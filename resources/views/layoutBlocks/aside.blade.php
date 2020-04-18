@@ -7,7 +7,7 @@
                 <div class="widget sidebar-widget featured-properties-widget">
                     <h3 class="widgettitle">Реклама</h3>
 
-                    <ul class="owl-carousel owl-alt-controls1 single-carousel" data-columns="1" data-autoplay="yes"
+                    <ul class="owl-carousel owl-alt-controls1 single-carousel" data-columns="1" data-autoplay="false"
                             data-pause="yes" data-pagination="no" data-arrows="yes" data-single-item="yes">
                         @foreach($block as $b)
                             <li class="item property-block">

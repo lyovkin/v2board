@@ -9,7 +9,7 @@
             @foreach($block as $b)
                 @if($b->paid_up < new \DateTime('today'))
 
-                        <ul class="owl-carousel owl-alt-controls1 single-carousel" data-columns="1" data-autoplay="yes"
+                        <ul class="owl-carousel owl-alt-controls1 single-carousel" data-columns="1" data-autoplay="false"
                             data-pause="yes" data-pagination="no" data-arrows="yes" data-single-item="yes">
                             <li class="item property-block">
                                 <a href="{{$b->link}}">
