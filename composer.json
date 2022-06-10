@@ -23,7 +23,7 @@
 		"jenssegers/agent": "^3.0@dev",
 		"fzaninotto/faker": "^1.5@dev",
 		"za-laravel/laravel-navigation": "dev-master",
-		"guzzlehttp/guzzle": "~5.0"
+		"guzzlehttp/guzzle": "~6.5"
     },
 	"autoload": {
 		"classmap": [
